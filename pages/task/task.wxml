@@ -1,0 +1,77 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+<block wx:if="{{projectCode}}">
+  <view class="messageCon">
+      <scroll-view scroll-x  class="nav-box">
+          <view class="nav-item {{curIndex==index?'active':''}}"               
+                wx:for="{{navList}}"
+                wx:key="{{index}}"
+                bindtap="selectItem"
+                data-code="{{item.categoryCode}}"
+                data-index="{{index}}">
+              <view>{{item.categoryName}}</view>
+              <view class="{{curIndex==index?'line':''}}"></view>
+          </view>
+          <view class='navigator-color'>
+            <navigator class="nav-search"
+              style="right: {{projectData.projectOwner == customerCode ? 80 : 0}}rpx;"
+              url="/pages/search/search?projectCode={{projectCode}}&curIndex=2">
+              <image src="../../images/about.png"></image>
+            </navigator>
+          </view>
+      </scroll-view>
+
+      <scroll-view scroll-y="true"
+                   class="messege-con"
+                   bindscrolltolower="scrollLower"
+                   wx:if="{{taskList.length}}">
+          <view wx:for="{{taskList}}"
+                wx:key="index"
+                bindtap='goDetail'
+                data-status='{{item.status}}'
+                data-projectCode='{{item.projectCode}}'
+                data-code='{{item.taskCode}}'>
+                  <view class='task'>
+                    <view class='task-top'>
+                      <image class='task-top-img' src='{{item.taskOwnerImg}}'></image>
+                      <view class="task-top-right">
+                        <view class='task-top-all'>
+                          <view class='task-top-name'>{{item.taskOwnerName}}</view>
+                          <!-- <view class='task-top-time'>{{item.createTime}} 发布</view> -->
+                        </view>
+                        <view class='task-top-all'>
+                          <view class="task-top-post">{{item.positionName}} {{item.organizeCname}}</view>              
+                        </view>
+                      </view>
+                    </view>
+                    <view class='task-content'>{{item.taskTitle}}</view>
+                    <view class='task-foot'>
+                      <view class='task-foot-time'>发布时间: {{tools.formatDate(item.createTime)}}</view>
+                      <view class='task-foot-status card-gray-status' wx:if='{{item.status==1 && curIndex==1}}'>待分派</view>
+                       <view class='task-foot-status card-gray-status' wx:if='{{item.status==1 && curIndex==0}}'>已拒绝</view>
+                      <view class='task-foot-status card-green-status' wx:if='{{item.status==2}}'>待确认</view>
+                      <view class='task-foot-status card-yellow-status' wx:if='{{item.status==3&&customerCode==item.taskExecutor||item.status==3&&customerCode==item.taskOwner}}'>进行中</view>
+                       <!-- <view class='task-foot-status card-yellow-status' wx:if='{{item.status==3&&customerCode!==item.taskOwner&&customerCode!==item.taskExecutor}}'>待审批</view> -->
+                        <!-- <view class='task-foot-status card-gray-status' wx:if='{{item.status==3&&customerCode!==item.taskOwner&&customerCode!==item.taskExecutor}}'>已审批</view> -->
+                      <view class='task-foot-status card-gray-status' wx:if='{{item.status==4}}'>已完成</view>
+                      </view>
+                  </view>
+          </view>
+      </scroll-view>
+
+      <view class="null-box" wx:if="{{!taskList.length}}">
+          暂无任务
+      </view>
+
+      <view class="add-box" bindtap='addTask'>
+          <image src="../../images/add-icon.png" mode="widthFix"></image>
+      </view>
+      <view class="add-box-project" bindtap='selectProject'>
+          <image src="../../images/addProject.png" ></image>
+      </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="null-box">
+    暂无内容
+  </view>
+</block>

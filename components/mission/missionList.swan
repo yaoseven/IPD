@@ -1,0 +1,20 @@
+<!--components/comMission/missionList.wxml-->
+
+<view class="com-item">
+    <view class="com-item-top">
+        <image class="com-it-person top"></image>
+        <view class="com-it-info top">
+            <view class="com-it-">asdfasd</view>
+            <view>行政经理 行政部</view>
+        </view>
+        <view class="com-it-timer top">2个小时前</view>
+    </view>
+    <view class="com-item-middle">
+        <view class="com-im-title">寻找失去的未来</view>
+        <view class="com-im-title-details">
+            为美好的世界线上祝福
+            阿斯顿发生
+        </view>
+    </view>
+
+</view>

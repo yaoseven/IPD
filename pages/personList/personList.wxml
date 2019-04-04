@@ -1,0 +1,28 @@
+<scroll-view scroll-y="true" class="team-list-box">
+  <view class="team-item"
+        wx:for="{{memberList}}"
+        wx:key="{{index}}"
+        data-item="{{item}}"
+        bindtap="itemSelected">
+    <view class="item-left" wx:if="{{index < 3}}">
+      <image wx:if="{{index == 0}}" src="../../images/rank-one.png"></image>
+      <image wx:if="{{index == 1}}" src="../../images/rank-two.png"></image>
+      <image wx:if="{{index == 2}}" src="../../images/rank-three.png"></image>
+    </view>
+    <view class="item-left" wx:else>{{index + 1}}</view>
+
+    <image class="item-avatar" src="{{item.customerWxImg}}"></image>
+
+    <view class="item-center">
+      <view class="user-name">{{item.customerWxNickname}}</view>
+      <view class="user-box">
+        <view>{{item.positionName}}</view>
+        <view>{{item.organizeCname}}</view>
+      </view>
+    </view>
+
+    <view class="item-right">
+      <view class="user-point">积分{{item.contributionValue}}</view>
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,241 @@
+
+/* comment template 公共样式 start */
+.comment-item {
+  padding: 40rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.comment-item .user-box {
+  display: flex;
+  align-items: center;
+}
+
+.comment-item .user-box .user-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.comment-item .user-box .user-info {
+  flex: 1;
+}
+
+.comment-item .user-box .user-info .user-name {
+  flex: 1;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 42rpx;
+}
+
+.comment-item .user-box .user-info .user-position {
+  margin-top: 6rpx;
+  display: flex;
+  align-items: center;
+}
+
+.comment-item .user-box .user-info .user-position view {
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #7E8495;
+  margin-right: 20rpx;
+}
+
+.comment-item .comment-main {
+  padding-left: 90rpx;
+}
+
+.comment-item .comment-main .comment-content {
+  margin-top: 16rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #333333;
+  letter-spacing: 0.52rpx;
+}
+
+.comment-item .comment-main .image-box {
+  margin-top: 16rpx;
+  display: flex;
+  flex-wrap:wrap;
+  margin-bottom: 20rpx;
+}
+
+.comment-item .comment-main .image-box image {
+  width: 31%;
+  margin-right: 3.5%;
+  margin-bottom: 20rpx;
+  height: 160rpx;
+}
+
+.comment-item .comment-main .image-box .margin-bottom0 {
+  margin-bottom: 0;
+}
+
+.comment-item .comment-main .comment-operate {
+  flex: 1;
+  margin-top: 14rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-item .comment-main .comment-operate .operate-left {
+  display: flex;
+  align-items: center;
+}
+
+.comment-item .comment-main .comment-operate .operate-left view {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  letter-spacing: 0.28rpx;
+  margin-right: 60rpx;
+}
+
+.comment-item .comment-main .comment-operate .operate-left .delete-box {
+  color: #29C37F;
+}
+
+.comment-item .comment-main .comment-operate .operate-left .comment-time {
+  color: #7E8495;
+}
+
+.comment-item .comment-main .comment-operate image {
+  width: 32rpx;
+  height: 30rpx;
+}
+
+
+.comment-item .comment-main .reply-box {
+  margin-top: 10rpx;
+}
+
+.comment-item .comment-main .reply-box .reply-item {
+  padding: 30rpx 20rpx;
+  margin-top: 20rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.comment-item .comment-main .reply-box .reply-item .reply-content {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #151515;
+  letter-spacing: 0.52rpx;
+}
+
+.comment-item .comment-main .reply-box .reply-item .reply-content text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #7E8495;
+  letter-spacing: 0.52rpx;
+}
+
+.no-margin-right {
+  margin-right: 0 !important;
+}
+
+.null-box {
+  position: relative;
+  z-index: 9;
+  text-align: center;
+  height: 300rpx;
+  line-height: 300rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.at-file-all{
+  margin-top: 10rpx;
+}
+.file-img-box{
+  width: 48rpx;
+  height: 48rpx;
+  margin-left: 10rpx;
+}
+.fileImg{
+  width: 48rpx;
+  height:48rpx;
+}
+.at-file{
+  display: flex;
+  align-items: center;
+}
+
+/*.discuss-con .at-con view{
+  display: inline-block;
+  font-size: 30rpx;
+  color: #2A2A2A;
+  letter-spacing: 0.48rpx;
+  line-height: 42rpx;
+}
+
+.discuss-con .at-con .green-box {
+  margin: 0 10rpx;
+  color: #29C37F;
+}*/
+
+.at-file-pic {
+    margin-top: 12rpx;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.at-file-pic image {
+    width: 31%;
+    height: 120rpx;
+    margin-right: 3.5%;
+    margin-bottom: 14rpx;
+    border-radius: 10rpx;
+}
+
+.at-file-pic .margin-bottom0 {
+  margin-bottom: 0;
+}
+
+.no-margin-right {
+  margin-right: 0 !important;
+}
+
+.at-file text{
+  font-size:24rpx;
+  color:#7B8294 ;
+  line-height: 48rpx
+}
+
+.fileName{
+  font-size: 24rpx;
+  color: #7E8495;
+  flex: 1;
+  text-align: justify;
+  line-height: 50rpx;
+  margin-left: 10rpx;
+  line-height: 32rpx;
+}
+
+.file-box{
+  margin-top:20rpx;
+}
+
+.at-file-all{
+  margin-top: 10rpx;
+}
+
+.file-img-box{
+  width: 48rpx;
+  height: 48rpx;
+  margin-left: 10rpx;
+}
+
+.fileImg{
+  width: 48rpx;
+  height:48rpx;
+}
+
+.at-file{
+  display: flex;
+}
+/* comment template 公共样式 end */
+
+
+

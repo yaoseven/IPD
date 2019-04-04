@@ -1,0 +1,15 @@
+<view class="left-move-box"
+      bindtouchstart='touchs'
+      bindtouchend='touchEnd'
+      bindtap="hiddenDelete"
+      bindtouchmove='touchm'
+      data-index="{{itemIndex}}"
+      style="transform: translateX({{nowIndex === itemIndex ? translateX : 0}}px);">
+  <slot></slot>
+  <view class="move-delete-box"
+        data-code="{{itemCode}}"
+        data-index="{{itemIndex}}"
+        catchtap="deleteItem">
+    <text>删除</text>
+  </view>
+</view>

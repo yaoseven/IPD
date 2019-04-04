@@ -1,0 +1,89 @@
+<block wx:if="{{projectCode}}">
+  <view class="messageCon">
+      <scroll-view scroll-x  class="nav-box">
+          <view class="nav-item {{curIndex==index?'active':''}}"
+                hidden="{{index === 3 && projectData.projectOwner !== customerCode}}"
+                wx:for="{{navList}}"
+                wx:key="{{index}}"
+                bindtap="selectItem"
+                data-code="{{item.categoryCode}}"
+                data-index="{{index}}">
+              <view>{{item.categoryName}}</view>
+              <view class="{{curIndex==index?'line':''}}"></view>
+          </view>
+      </scroll-view>
+
+      <scroll-view scroll-y="true"
+                   class="messege-con"
+                   bindscrolltolower="scrollLower"
+                   wx:if="{{topicList.length}}">
+          <view wx:for="{{topicList}}"
+                wx:key="index"
+                discuss-item-list='{{item}}'
+                bindtap='goDetail'
+                data-projectCode='{{item.projectCode}}'
+                data-code='{{item.topicCode}}'>
+            <view class="discuss">
+                <discuss-item color-change="#000"
+                              discuss-item="{{item}}"
+                              is-response="{{curIndex == 1}}"
+                              is-cui-cu="{{curIndex == 3}}"
+                              bindcuicu="setCuiCu"
+                              bindshowfile="showFile"></discuss-item>
+            </view>
+            <view class="area-line" wx:if="{{topicList.length > index + 1}}"></view>
+          </view>
+      </scroll-view>
+
+      <view class="null-box" wx:if="{{!topicList.length}}">
+          暂无讨论
+      </view>
+
+      <view class="add-box" bindtap='addTopic' wx:if="{projectCode}">
+          <image src="../../images/add-icon.png" mode="widthFix"></image>
+      </view>
+
+      <view class="add-box-project" bindtap='selectProject'>
+          <image src="../../images/addProject.png" ></image>
+      </view>
+      <view class='navigator-color'>
+        <navigator class="nav-search"
+                  style="right: {{projectData.projectOwner == customerCode ? 80 : 0}}rpx;"
+                  url="/pages/search/search?projectCode={{projectCode}}&navList={{navList}}">
+            <image src="../../images/about.png"></image>
+        </navigator>
+
+        <navigator class="nav-edit"
+                  wx:if="{{projectData.projectOwner == customerCode}}"
+                  url="/pages/cateLogList/cateLogList?projectCode={{projectCode}}&navList={{navList}}">
+            <image src="../../images/edit.png"></image>
+        </navigator>
+      </view>
+  </view>
+  <bill-template template-type="review" is-template-show="{{isReviewTemplateShow}}"></bill-template>
+
+  <unanwser-member wx:if="{{nowTopicCode}}"
+                   topic-code="{{nowTopicCode}}"
+                   bindsethidden="setHiddenMember"
+                   bindgetselect="getSelectMember"></unanwser-member>
+
+  <video wx:if='{{videoUrl}}' 
+          id='videoPlay'
+          class="play-video-box"
+          show-center-play-btn="{{false}}" 
+          src='{{videoUrl}}' 
+          controls="true" 
+          objectFit="cover">
+      <cover-view class="deleteImg">
+        <cover-image src="../../images/delete.png" bindtap='delVideo'></cover-image>
+      </cover-view>
+  </video>
+</block>
+<block wx:else>
+  <view class="null-box">
+    暂无内容
+  </view>
+  <view class="add-box-project" style="bottom: 40rpx;" bindtap='selectProject'>
+      <image src="../../images/addProject.png" ></image>
+  </view>
+</block>

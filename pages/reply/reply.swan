@@ -1,0 +1,30 @@
+<!--pages/addComment/addComment.wxml-->
+<scroll-view class="scroll-comment-box" scroll-y="true">
+  <view class="comment-box">
+    <textarea class="comment-textarea"
+              auto-focus
+              placeholder="请输入审核意见"
+              maxlength="500"
+              bindinput="inputChange"
+              data-name="commentContent"/>
+
+  <view class="comment-image-box">
+    <view class="item-comment-image {{index % 3 === 2 ? 'no-margin-right' : ''}}"
+        wx:for="{{imageList}}"
+        wx:key="index">
+      <image src="{{item.filePath}}" mode='aspectFill'></image>
+      <view class="delete-box" catchtap="deleteImg" data-index="{{index}}">
+          x
+      </view>
+    </view>
+  </view>
+  <view class="topFoot">
+    <view class="topFoot-img {{imageList.length % 3 === 2 ? 'no-margin-right' : ''}}" bindtap="uploadImage">
+      <image src='/images/fileImg.png'></image>
+    </view>
+
+  </view>
+  </view>
+  
+    <button type='primary' class='topFoot-btn' bindtap="saveComment">完成</button>
+</scroll-view>

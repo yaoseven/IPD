@@ -1,0 +1,235 @@
+
+.discuss-top {
+    width:100%;
+    display: flex;
+    align-items: center;
+}
+.discuss-top .staff-logo {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.discuss-top .staff-info {
+    flex: 1;
+    font-family: PingFangSC-Medium;
+}
+
+.discuss-top .staff-info .staff-name {
+    display: flex;
+}
+
+.discuss-top .staff-info .staff-name .name {
+    flex: 1;
+    font-size: 32rpx;
+    letter-spacing: 0.6rpx;
+    font-family: PingFangSC-Medium;
+    color: #333333;
+    line-height: 42rpx;
+}
+.discuss-top .staff-info .staff-name .staff-timer {
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    color: #7E8495;
+}
+
+.discuss-top .staff-info .staff-post {
+    display: flex;
+    align-items: center;
+}
+
+.discuss-top .staff-info .staff-post view {
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #7E8495;
+    margin-right: 20rpx;
+}
+
+.discuss-con {
+  margin-top: 30rpx;
+}
+
+.discuss-con .at-title {
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  letter-spacing: 0.52px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis
+}
+
+/**待定样式 start*/
+.at-name text {
+  margin-right: 24rpx;
+  font-size: 28rpx;
+  color: #29C37F;
+  letter-spacing: 0.52rpx;
+  margin-bottom: 10rpx;
+}
+/**待定样式 end*/
+
+.discuss-con .at-con {
+  margin-top: 16rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #2A2A2A;
+  letter-spacing: 0.48rpx;
+  line-height: 42rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.discuss-con .at-detail-con {
+  margin-top: 16rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #2A2A2A;
+  letter-spacing: 0.48rpx;
+  line-height: 42rpx;
+}
+
+.fileName{
+  font-size: 24rpx;
+  color: #7E8495;
+  flex: 1;
+  text-align: justify;
+  line-height: 50rpx;
+  margin-left: 10rpx;
+  line-height: 32rpx;
+}
+.at-file-all{
+  margin-top: 10rpx;
+}
+.file-img-box{
+  width: 48rpx;
+  height: 48rpx;
+  margin-left: 10rpx;
+}
+.fileImg{
+  width: 48rpx;
+  height:48rpx;
+}
+.at-file{
+  display: flex;
+  align-items: center;
+}
+
+/*.discuss-con .at-con view{
+  display: inline-block;
+  font-size: 30rpx;
+  color: #2A2A2A;
+  letter-spacing: 0.48rpx;
+  line-height: 42rpx;
+}
+
+.discuss-con .at-con .green-box {
+  margin: 0 10rpx;
+  color: #29C37F;
+}*/
+.file-box{
+  margin-top:20rpx
+}
+.at-file-pic {
+    margin-top: 12rpx;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.at-file-pic image {
+    width: 31%;
+    height: 120rpx;
+    margin-right: 3.5%;
+    margin-bottom: 14rpx;
+    border-radius: 10rpx;
+}
+
+.at-file-pic .margin-bottom0 {
+  margin-bottom: 0;
+}
+
+.no-margin-right {
+  margin-right: 0 !important;
+}
+
+.at-file text{
+  font-size:24rpx;
+  color:#7B8294 ;
+  line-height: 48rpx
+}
+
+
+.answerTitle{
+  position: absolute;
+  right: 0;
+  top: 100rpx;
+  width: 100rpx;
+  height: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  letter-spacing: 0.52rpx;
+  background: #FF4B41;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 28rpx;
+  z-index: 99
+}
+
+/* 留言转发区 */
+.at-situation {
+    margin-top: 20rpx;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    color: #7B8294;
+    letter-spacing: 0.44rpx;
+    overflow: hidden;
+}
+.at-comments {
+    float: left;
+    display: flex;
+    margin-right: 40rpx;
+    margin-top: 18rpx;
+}
+
+.at-comments image {
+    width:26rpx;
+    height:24rpx;
+    margin-right: 10rpx;
+}
+.at-browse image{
+    height:20rpx;
+    margin-top: 2rpx;
+}
+.at-reply {
+    float: right;
+    width:160rpx;
+    height: 52rpx;
+    background: #29C37F;
+    border-radius: 26rpx;
+    text-align: center;
+    line-height: 52rpx;
+    font-size: 28rpx;
+    color: #FFFFFF;
+    letter-spacing: 0.52rpx;
+}
+
+.share-box {
+    float: left;
+    padding: 18rpx 40rpx 0 0;
+    margin: 0;
+    background: none;
+    border-radius: 0;
+}
+
+.share-box image {
+    width:26rpx;
+    height:24rpx;
+    margin-right: 10rpx;
+}

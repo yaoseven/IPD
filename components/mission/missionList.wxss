@@ -1,0 +1,29 @@
+/* components/comMission/missionList.wxss */
+.com-item{
+    background:rgba(0, 0, 0, 0.5);
+    border-radius:5px;
+    font-size: 34rpx;
+    color: #7B8294;
+}
+.com-item-top{
+    display: flex;
+
+}
+.com-item-top .com-it-person{
+    width: 100rpx;
+    height: 100rpx;
+}
+.com-item-top .com-it-timer{
+    text-align: right;
+}
+.com-item-top .com-it-
+
+.com-item-top .top{
+    flex-grow: 1;
+}
+.com-item-top .top:nth-of-type(2){
+    flex-grow: 8;
+}
+
+
+

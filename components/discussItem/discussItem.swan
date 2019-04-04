@@ -1,0 +1,121 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
+<view class='discuss-top'>
+  <image class='staff-logo' src='{{discussItem.customerWxImg}}'></image>
+  <view class="staff-info">
+    <view class='staff-name'>
+        <view class="name">{{discussItem.customerWxNickname}}</view>
+        <view class='staff-timer'>{{discussItem.createTime}}</view>
+    </view>
+    <view class='staff-post'>
+        <view>{{discussItem.positionName}}</view>
+        <view>{{discussItem.organizeCname}}</view>
+    </view>
+  </view>
+</view>
+
+<view class='discuss-con'>
+  <view class='at-name' wx:if="{{discussItem.replyCustomer.length}}">
+    <text wx:for="{{discussItem.replyCustomer}}"  wx:key="index">@{{item}}</text>
+  </view>
+  <view class='at-title'>{{discussItem.topicTitle}}</view>
+
+  <view class="{{isDetail ? 'at-detail-con' : 'at-con'}}">{{topicContent}}</view>
+
+
+
+  <!-- <view class='at-con'>
+    <view wx:for="{{topicContentList}}"
+          wx:key="{{index}}"
+          wx:if="{{item.length}}"
+          class="{{tools.strIndexOf(item, '@') ? 'green-box' : ''}}">
+      {{item}}
+    </view>
+  </view> -->
+
+  <view class='at-file-pic' wx:if="{{discussItem.attachmentImgList.length}}">
+    <image wx:for="{{discussItem.attachmentImgList}}"
+            src='{{item.attachmentPath}}'
+            wx:key="{{index}}"
+            catchtap="showImgList"
+            mode='aspectFill'
+            class="{{index % 3 === 2 ? 'no-margin-right' : ''}} {{discussItem.attachmentImgList.length-index == 1 || discussItem.attachmentImgList.length-index == 2 || discussItem.attachmentImgList.length-index == 3 ? 'margin-bottom0' : ''}}"></image>
+  </view>
+    <view class="file-box">
+    <view class="at-file-all"
+          wx:key="{{index}}"
+          wx:for="{{discussItem.attachmentFileList}}"
+          catchtap="showFile"
+          data-type="{{item.attachmentDesc}}"
+          data-path="{{item.attachmentPath}}">
+      <view class='at-file'>
+            <!-- <text>附件:</text> -->
+          <view class="file-img-box">
+            <image class='fileImg'
+                    wx:if="{{item.attachmentDesc == 'rar' || item.attachmentDesc == 'zip'}}"      
+                    src='/images/rar.png'></image>
+
+            <image class='fileImg'
+                  wx:elif="{{item.attachmentDesc == 'pdf'}}"    
+                  src='/images/pdf.png'></image>
+
+            <image class='fileImg'
+                  wx:elif="{{item.attachmentDesc == 'doc' || item.attachmentDesc == 'wsp' || item.attachmentDesc == 'docx'}}"    
+                  src='/images/word.png'></image>    
+
+            <image class='fileImg'
+                  wx:elif="{{item.attachmentDesc == 'jpg' || item.attachmentDesc == 'jpeg'}}"    
+                  src='/images/jpg.png'></image>
+
+            <image class='fileImg'
+                  wx:elif="{{item.attachmentDesc == 'png'}}"    
+                  src='/images/jpg.png'></image>
+
+            <image class='fileImg'
+                  wx:elif="{{item.attachmentDesc =='xls' || item.attachmentDesc=='xlsx'}}" 
+                  src='/images/excel.png'></image>
+
+            <image class='fileImg'
+                  wx:elif="{{item.attachmentDesc=='mp4' || item.attachmentDesc=='avi'}}" 
+                  src='/images/video.png'></image>
+
+            <image class='fileImg'
+                  wx:else
+                  src='/images/other.png'></image>
+          </view>  
+          <view class='fileName'>{{item.attachmentTile}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='at-situation' wx:if='{{!noIcon}}'>
+  <view class='at-comments' bindtap='goDetail' data-code='{{discussItem.topicCode}}'>
+    <image src='../../images/comments-icon.png'></image>
+    <view class='comments-num'>{{discussItem.commentNum}}</view>
+  </view>
+  <view class='at-comments at-browse'>
+    <image src='../../images/browese.png'></image>
+    <view class='comments-num'>{{discussItem.viewNum}}</view>
+  </view>
+
+  <!-- <button class='share-box' open-type="share">
+    <image src='../../images/share.png'></image>
+  </button> -->
+  
+  <view catchtap="goToComment"
+        data-code="{{discussItem.topicCode}}"
+        wx:if="{{isResponse}}"
+        class='at-reply'>
+      回复
+  </view>
+
+  <view wx:if="{{isCuiCu}}"
+        catchtap="setCuiCu"
+        data-code="{{discussItem.topicCode}}"
+        class='at-reply'>
+      督促
+  </view>
+</view>
+
+

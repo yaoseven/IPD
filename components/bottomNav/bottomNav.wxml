@@ -1,0 +1,30 @@
+<view class="bottom-nav-box">
+    <navigator class="nav-item {{nowIndex == 0 ? 'nav-item-on' : ''}}"
+                url="/pages/messageIndex/messageIndex?projectCode={{projectCode}}">
+        <image mode="widthFix" src="../../images/index-selected-tab.png"></image>
+        <text>讨论</text>
+    </navigator>
+    <!-- <navigator class="nav-item {{nowIndex == 0 ? 'nav-item-on' : ''}}"
+               url="/pages/mission/index/index">
+        <image mode="widthFix" src="../../images/index-selected-tab.png"></image>
+        <text>任务</text>
+    </navigator> -->
+    
+    <navigator class="nav-item {{nowIndex == 2 ? 'nav-item-on' : ''}}"
+                url="/pages/fileList/fileList?projectCode={{projectCode}}">
+        <image mode="widthFix" src="../../images/file-selected-tab.png"></image>
+        <text>资料</text>
+    </navigator>
+    
+    <navigator class="nav-item {{nowIndex == 3 ? 'nav-item-on' : ''}}"
+                url="/pages/meeting/meeting?projectCode={{projectCode}}">
+        <image mode="widthFix" src="../../images/table-selected-tab.png"></image>
+        <text>会表</text>
+    </navigator>
+    
+    <navigator class="nav-item {{nowIndex == 1 ? 'nav-item-on' : ''}}"
+                url="/pages/teamInfo/teamInfo?projectCode={{projectCode}}">
+        <image mode="widthFix" src="../../images/list-selected-tab.png"></image>
+        <text>团队</text>
+    </navigator>
+</view>

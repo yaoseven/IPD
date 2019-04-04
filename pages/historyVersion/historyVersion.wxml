@@ -1,0 +1,91 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
+<view class='messageCon'>
+      <scroll-view scroll-y="true"
+                   class="messege-con">
+      <block wx:if="{{deliveryCode.length}}">
+        <view class="history-box" wx:for="{{deliveryCode}}" wx:key="{{index}}">
+            <view class='task-history'>
+              <view class='task-fileItem taskFile'>
+                <view class='title titleFlex'>
+                  <view class='title-name'>版本{{item.deliveryVersion}}.0</view>
+                </view>
+                
+                <view class='task-item-right'>                    
+                  <view class='task-duty timeFlex'>
+                  <text>{{tools.formatDate(item.createTime)}}</text>  
+                  <!-- <image data-index="{{index}}" bindtap="arrow" src='/images/arrow.png'></image>  -->
+                  <image  src='/images/arrow.png'></image> 
+                </view>
+              </view>
+            </view>   
+            <view wx:if="{{arrowList}}">           
+            <view class='task-fileItem'>
+                <view class="file-img-box">
+                  <image class='task-fileImg'
+                          wx:if="{{item.deliveryFileExt == 'rar' || item.deliveryFileExt == 'zip'}}"      
+                          src='/images/rar.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{item.deliveryFileExt == 'pdf'}}"    
+                        src='/images/pdf.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{item.deliveryFileExt == 'doc' || item.deliveryFileExt == 'wsp' || item.deliveryFileExt == 'docx'}}"    
+                        src='/images/word.png'></image>    
+
+                  <image class='task-fileImg'
+                        wx:elif="{{item.deliveryFileExt == 'jpg' || item.deliveryFileExt == 'jpeg'}}"    
+                        src='/images/jpg.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{item.deliveryFileExt == 'png'}}"    
+                        src='/images/jpg.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{item.deliveryFileExt=='xls' || item.deliveryFile=='xlsx'}}" 
+                        src='/images/excel.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{item.deliveryFileExt=='mp4' || item.deliveryFileExt=='avi'}}" 
+                        src='/images/video.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:else
+                        src='/images/other.png'></image>
+                </view>
+              <view class='task-item-center'>
+                <view class="task-name">{{item.deliveryFileName}}</view>
+              </view>
+            </view>
+              <view class='task-fileItem column' wx:if="{{item.ipdDeliveryAuditorList.length}}"
+                 >
+                <view class='task-fileItemChild' wx:for="{{item.ipdDeliveryAuditorList}}" 
+                  wx:if="{{item.auditStatus!='0'}}" 
+                  >
+                  <image class='task-smallImg' src='{{item.auditorImg}}'></image>
+                  <view class='task-item-center'>
+                    <view class="task-small-name">{{item.auditorName}}</view>
+                    <view class="task-small-duty">{{item.auditOpinion}}</view>
+                  </view>
+                  <image wx:if="{{item.auditStatus==1}}" class='okImg' src='/images/agree.png'></image>
+                  <image wx:elif="{{item.auditStatus==2}}" class='okImg' src='/images/disagree.png'></image>
+                </view>           
+              </view>            
+              <view class='task-fileItem'>
+                <view class='peopleImg'>
+                  <image wx:for="{{item.ipdDeliveryAuditorList}}" wx:key='index' src='{{item.auditorImg}}'></image>
+                </view>
+                <view class='task-count'>共<text>{{item.ipdDeliveryAuditorList.length}}</text>人审核 </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+        <block wx:else>
+          <view class="null-box">
+            暂无内容
+          </view>
+        </block>
+      </scroll-view>
+      </view>

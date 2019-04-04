@@ -1,0 +1,85 @@
+/**分类**/
+.bg-box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 8;
+  background: rgba(0,0,0,0.6);
+}
+
+.template-box {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  bottom: -420rpx;
+  width: 100%;
+  background: #ffffff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.template-box.showTemplate {
+  bottom: 0;
+}
+
+.catelog-box {
+  white-space: nowrap;
+  height:92rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+.cateItem {
+  display: inline-block;
+  margin: 0 40rpx;
+}
+
+.cateTitle {
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 90rpx;
+  color: #7E8495;
+}
+
+.cateTitle view{
+  height: 4rpx;
+  width: 56rpx;
+  background: #ffffff;
+  margin: 0 auto;
+  margin-top: -3rpx;
+}
+
+.activeCate .cateTitle {
+  font-size: 32rpx;
+  color: #29C37F;
+}
+
+.activeCate .cateTitle view {
+  background: #29C37F;
+}
+
+.template-item-box {
+  white-space: nowrap;
+  height:320rpx;
+  padding: 40rpx 0;
+  margin: 0 10rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+.template-item-box .templateItem {
+  display: inline-block;
+  height: 240rpx;
+  margin: 0 10rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.template-item-box image {
+  width: 140rpx;
+  height: 240rpx;
+}

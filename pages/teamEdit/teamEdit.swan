@@ -1,0 +1,42 @@
+<view class='groupDetail'>
+  <view class='groupDetail_top'>
+     <image class='groupDetail_top_Bg' 
+            src='{{clubData.associationImgPath}}' 
+            style='width:100%;height:300rpx;'>
+     </image>
+     <view class='wrap'></view>
+  </view>
+
+  <view class='con_top'>
+    <view class="con-top-box">
+      <image class='group_logo' src='{{projectData.projectCoverPath}}'></image>
+
+      <view class='title'>
+        {{projectData.projectName}}
+      </view> 
+
+      <view class='introduce'>{{projectData.projectDesc}}</view>
+      <!-- 群员数量及其头像显示 -->
+      <view class='member_count'>
+        <view wx:for="{{memberList}}" wx:key="{{index}}" class="member" wx:if="{{index < 4}}">
+          <image src='{{item.customerWxImg}}'></image>
+        </view>
+        <view class='count'>{{memberList.length}}个成员</view>
+      </view>
+      <view class="create-box">已创建 {{days}} 天</view>
+    </view>
+  </view>
+  
+  <block>
+    <navigator url="/pages/addProject/addProject?projectCode={{projectCode}}"
+                class='clubBoss'>
+      <view>设置项目信息</view>
+      <image src='../../images/arrow.png'></image>
+    </navigator>
+    <navigator url="/pages/editMember/editMember?projectCode={{projectCode}}"
+                class='clubBoss'>
+      <view>成员管理</view>
+      <image src='../../images/arrow.png'></image>
+    </navigator>
+  </block>
+</view> 

@@ -1,0 +1,34 @@
+.registor-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 40rpx 30rpx 60rpx 30rpx;
+}
+
+.registor-title .message-box {
+	font-size: 48rpx;
+	color: #000000;
+}
+.registor-title image{
+    width:128rpx;
+    height:60rpx;
+}
+.skip-box {
+	width: 100%;
+    text-align: center;
+    font-size: 28rpx;
+    line-height: 80rpx;
+    color: #333;
+    height:80rpx;
+}
+
+.next-btn-large {
+	clear: both;
+  text-align: center;
+  color: #fff;
+  background: #29C37F;
+  height: 84rpx;
+	border-radius: 10rpx;
+	margin: 80rpx 30rpx 0;
+	font-size: 30rpx;
+}

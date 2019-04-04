@@ -1,0 +1,164 @@
+<!--template.wxml-->
+<view class="comment-item" wx:for="{{reportList}}" wx:key="index" wx:if="{{item.status == '1'}}">
+
+  <view class="user-box">
+    <image src="{{executorImg}}" class="user-avatar" mode="widthFix"></image>
+
+    <view class="user-info">
+      <view class="user-name">{{executorName}}</view>
+    </view>
+  </view>
+
+  <view class="comment-main">
+    <view class="comment-content">{{item.reportContent}}</view>
+    
+
+    <view class="image-box" wx:if="{{item.attachmentImgList.length}}">
+      <image class="{{index % 3 === 2 ? 'no-margin-right' : ''}} {{item.attachmentImgList.length-index == 1 || item.attachmentImgList.length-index == 2 || item.attachmentImgList.length-index == 3 ? 'margin-bottom0' : ''}}"
+              wx:for="{{item.attachmentImgList}}"
+              wx:for-item="itemFile"
+              wx:key="itemFile"
+              catchtap="showImgList"
+              mode='aspectFill'
+              data-imglist="{{item.attachmentImgList}}"
+              src="{{itemFile.attachmentPath}}"></image>
+    </view>
+    <view class="file-box">
+      <view class="at-file-all"
+          wx:key="{{index}}"
+          wx:for-item="itemAtt"
+          wx:for="{{item.attachmentFileList}}"
+          catchtap="showFile"
+          data-type="{{itemAtt.attachmentDesc}}"
+          data-path="{{itemAtt.attachmentPath}}">
+        <view class='at-file'>
+              <!-- <text>附件:</text> -->
+            <view class="file-img-box">
+              <image class='fileImg'
+                      wx:if="{{itemAtt.attachmentDesc == 'rar' || itemAtt.attachmentDesc == 'zip'}}"      
+                      src='/images/rar.png'></image>
+
+              <image class='fileImg'
+                    wx:elif="{{itemAtt.attachmentDesc == 'pdf'}}"    
+                    src='/images/pdf.png'></image>
+
+              <image class='fileImg'
+                    wx:elif="{{itemAtt.attachmentDesc == 'doc' || itemAtt.attachmentDesc == 'wsp' || itemAtt.attachmentDesc == 'docx'}}"    
+                    src='/images/word.png'></image>    
+
+              <image class='fileImg'
+                    wx:elif="{{itemAtt.attachmentDesc == 'jpg' || itemAtt.attachmentDesc == 'jpeg'}}"    
+                    src='/images/jpg.png'></image>
+
+              <image class='fileImg'
+                    wx:elif="{{itemAtt.attachmentDesc == 'png'}}"    
+                    src='/images/jpg.png'></image>
+
+              <image class='fileImg'
+                    wx:elif="{{itemAtt.attachmentDesc =='xls' || itemAtt.attachmentDesc=='xlsx'}}" 
+                    src='/images/excel.png'></image>
+
+              <image class='fileImg'
+                    wx:elif="{{itemAtt.attachmentDesc=='mp4' || itemAtt.attachmentDesc=='avi'}}" 
+                    src='/images/video.png'></image>
+
+              <image class='fileImg'
+                    wx:else
+                    src='/images/other.png'></image>
+            </view>  
+            <view class='fileName'>{{itemAtt.attachmentTile}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="comment-operate">
+      <view class="operate-left">
+        <view class="comment-time">{{item.intervalTimeDesc ? item.intervalTimeDesc : item.createTime}}</view>
+      </view>
+      <image src="../../images/add-reply-icon.png"
+              wx:if="{{customerCode == editorCode}}"
+              data-code="{{item.reporter}}"
+              data-target="{{item.taskCode}}"
+              catchtap="replyComment"></image>
+      
+    </view>
+     <view class="reply-box" wx:if="{{commentList.length}}">
+      <view class="reply-item"
+            wx:for="{{commentList}}"
+            wx:for-item="replyComment"
+            wx:for-index="replayIndex"
+            wx:key="replyComment">
+        <view class="reply-content"><text>发起人: </text>{{replyComment.commentContent}}</view>
+
+
+        <view class="image-box" wx:if="{{replyComment.attachmentImgList.length}}">
+          <image class="{{index % 3 === 2 ? 'no-margin-right' : ''}} {{replyComment.attachmentImgList.length-index == 1 || replyComment.attachmentImgList.length-index == 2 || replyComment.attachmentImgList.length-index == 3 ? 'margin-bottom0' : ''}}"
+                wx:for="{{replyComment.attachmentImgList}}"
+                wx:for-item="itemFile"
+                wx:key="{{itemFile}}"
+                catchtap="showImgList"
+                data-imglist="{{replyComment.attachmentImgList}}"
+                mode='aspectFill'
+                src="{{itemFile.attachmentPath}}"></image>
+        </view>
+      <view class="file-box">
+        <view class="at-file-all"
+            wx:key="{{index}}"
+            wx:for-item="itemAtt"
+            wx:for="{{replyComment.attachmentFileList}}"
+            catchtap="showFile"
+            data-type="{{itemAtt.attachmentDesc}}"
+            data-path="{{itemAtt.attachmentPath}}">
+          <view class='at-file'>
+                <!-- <text>附件:</text> -->
+              <view class="file-img-box">
+                <image class='fileImg'
+                        wx:if="{{itemAtt.attachmentDesc == 'rar' || itemAtt.attachmentDesc == 'zip'}}"      
+                        src='/images/rar.png'></image>
+
+                <image class='fileImg'
+                      wx:elif="{{itemAtt.attachmentDesc == 'pdf'}}"    
+                      src='/images/pdf.png'></image>
+
+                <image class='fileImg'
+                      wx:elif="{{itemAtt.attachmentDesc == 'doc' || itemAtt.attachmentDesc == 'wsp' || itemAtt.attachmentDesc == 'docx'}}"    
+                      src='/images/word.png'></image>    
+
+                <image class='fileImg'
+                      wx:elif="{{itemAtt.attachmentDesc == 'jpg' || itemAtt.attachmentDesc == 'jpeg'}}"    
+                      src='/images/jpg.png'></image>
+
+                <image class='fileImg'
+                      wx:elif="{{itemAtt.attachmentDesc == 'png'}}"    
+                      src='/images/jpg.png'></image>
+
+                <image class='fileImg'
+                      wx:elif="{{itemAtt.attachmentDesc =='xls' || itemAtt.attachmentDesc=='xlsx'}}" 
+                      src='/images/excel.png'></image>
+
+                <image class='fileImg'
+                      wx:elif="{{itemAtt.attachmentDesc=='mp4' || itemAtt.attachmentDesc=='avi'}}" 
+                      src='/images/video.png'></image>
+
+                <image class='fileImg'
+                      wx:else
+                      src='/images/other.png'></image>
+              </view>  
+              <view class='fileName'>{{itemAtt.attachmentTile}}</view>
+          </view>
+        </view>
+      </view>
+
+        <view class="comment-operate">
+          <view class="operate-left">
+            <view class="comment-time">{{replyComment.intervalTimeDesc ? replyComment.intervalTimeDesc : replyComment.createTime}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<view class="null-box" wx:if="{{!reportList.length}}">
+  暂无汇报
+</view>

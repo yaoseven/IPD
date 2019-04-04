@@ -1,0 +1,24 @@
+<view class="bg-box" wx:if="{{isTemplateShow}}" bindtap="hiddenTemplate"></view>
+
+<view class="template-box {{isTemplateShow ? 'showTemplate' : ''}}">
+  <scroll-view scroll-x="true" class='catelog-box'>
+      <block wx:for="{{templateTypes}}" wx:key="index">
+        <view class="cateItem {{templateCatalogCode === item.templateCatalogCode ? 'activeCate' : ''}}"
+            data-code="{{item.templateCatalogCode}}"
+            bindtap="changeCate">
+          <view class='cateTitle'>
+            {{item.templateCatalogName}}
+            <view></view>
+          </view>
+        </view>
+      </block>
+  </scroll-view>
+
+  <scroll-view scroll-x="true" class='template-item-box' scroll-left="{{scrollLeft}}">
+      <block wx:for="{{templateList}}" wx:key="index">
+        <view class="templateItem" bindtap="goToNextPage" data-item="{{item}}">
+          <image src="{{item.backImgPath}}" mode="aspectFill"></image>
+        </view>
+      </block>
+  </scroll-view>
+</view>

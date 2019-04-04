@@ -1,0 +1,122 @@
+<view class="team-head-box">
+	<image class="team-head-bg" src="../../images/messegeIndexBg.png"></image>
+	<view class="team-head">
+		<view class="head-top {{customerCode == projectInfo.projectOwner ? '' : 'no-invite'}}">
+			<view class="user-box">
+				<image class="head-img" src="{{teamInfo.customerWxImg}}"></image>
+				<view class="user-detail">
+					<view class="user-name">
+						<view>{{teamInfo.customerWxNickname}}</view>
+						<!--<navigator wx:if="{{customerCode == projectInfo.projectOwner}}"-->
+									<!--url="/pages/teamEdit/teamEdit?projectCode={{query.projectCode}}">-->
+							<!--<image src="../../images/edit.png" mode="widthFix"></image>-->
+						<!--</navigator>-->
+					</view>
+					<view class="user-level">
+						<text>{{teamInfo.positionName}}　</text>
+						<text>{{teamInfo.organizeCname}}</text>
+					</view>
+				</view>
+			</view>
+			<button wx:if="{{customerCode == projectInfo.projectOwner}}"
+				open-type="share" 
+                class="invite-btn" 
+                data-code="1111">+邀请</button>
+		</view>
+		<view class="head-bottom">
+			<view class="bottom-num">				
+				<view class="desc">当前排行:
+        <text class="numColor">{{teamInfo.ranking ? teamInfo.ranking : 1}}</text>
+        </view>
+			</view>
+			<view class="bottom-num">
+				<view class="desc">积分:
+        
+				<text class="numColor">{{teamInfo.contributionValue}}</text>
+        </view>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="team-list-box">
+	<view class="team-item"
+				wx:for="{{teamList}}"
+				wx:key="{{index}}">
+		<view class="item-left" wx:if="{{index < 3}}">
+			<image wx:if="{{index == 0}}" src="../../images/rank-one.png"></image>
+			<image wx:if="{{index == 1}}" src="../../images/rank-two.png"></image>
+			<image wx:if="{{index == 2}}" src="../../images/rank-three.png"></image>
+		</view>
+		<view class="item-left" wx:else>{{index + 1}}</view>
+
+		<image class="item-avatar" src="{{item.customerWxImg}}"></image>
+
+		<view class="item-center">
+	      <view class='user-box-all'>
+	        <view class="user-name">{{item.customerWxNickname}}</view>
+	        <image wx:if="{{item.customerIdentity==='admin'}}" class='userAdmin' src='/images/admin.png'></image>
+	        <!-- 头衔 -->
+	        <view wx:if="{{item.honorName}}" class='userCard'>{{item.honorName}}</view>
+	      </view>
+		  <view class="user-box">
+			<view>{{item.organizeCname}}</view>
+		  </view>
+	      	<view class="user-box">
+					<view>{{item.positionName}}</view>
+				</view>
+			</view>
+
+		<view class="item-right">
+	      <view class='arrow' 
+	      		wx:if="{{teamInfo.customerIdentity==='owner' || teamInfo.customerIdentity === 'admin'}}"
+	      		bindtap='model'
+	      		data-customerIdentity="{{item.customerIdentity}}" 
+	      		data-name="{{item.honorName}}" 
+	      		data-customerWxNickname="{{item.customerWxNickname}}"
+	      		data-customerCode="{{item.customerCode}}"
+	      		data-code="{{index}}">
+	        <image wx:if="{{curIndex===index}}" src='/images/arrowImgSelect.png'></image>
+	        <image wx:else src='/images/arrowImg.png'></image>
+	      </view>
+	      <view class='point-box'>
+	        <view class="user-point">{{item.contributionValue}}</view>
+	      </view>
+
+			<!-- <image wx:if="{{item.weeklyTrend < 0}}" src="../../images/down-arrow.png"></image>
+			<image wx:if="{{item.weeklyTrend > 0}}" src="../../images/up-arrow.png"></image>
+			<view class="zero-point" wx:if="{{item.weeklyTrend == 0}}">-</view> -->
+		</view>
+    <!-- model -->
+
+</view>
+    <view class="model-all-box" wx:if="{{show && teamInfo.customerIdentity}}" bindtap="hiddenModal">
+	    <view class='model-box' style="top: {{top}}px" >
+	      <view bindtap='mask' data-index='1'>设置头衔</view>
+	      <view bindtap='mask' data-index='0'>赠送积分</view>
+	      <view bindtap='mask' data-index='2'>设置管理员</view>
+	    </view>
+	</view>
+<!-- 弹框 -->
+<view wx:if="{{mask}}" class="mask">
+	<view class="maskIndex">
+		<view wx:if="{{maskInput}}" class="maskInfo">
+	      <input type="{{type}}" class="name" maxlength="{{maxlength}}" name="" bindinput="bindKeyInput" placeholder="{{placeholder}}" value="{{inputValue}}"></input>
+		</view>
+		<view wx:else class="maskInfo nickName">
+			<view wx:if="{{customerIdentity==='admin'}}" class="nickName">
+			是否取消{{customerWxNickname}}为管理员？
+			</view>
+			<view wx:else class="nickName">
+			是否设置{{customerWxNickname}}为管理员？
+			</view>
+		</view>
+
+		<view class="maskFoot">
+			<text wx:if="{{index==0}}" class="maskFootSure" bindtap="sureNumber">确定</text>
+			<text wx:if="{{index==1}}" class="maskFootSure" bindtap="update">修改</text>
+			<text wx:if="{{index==2}}" class="maskFootSure" bindtap="updateManager">确定</text>
+			<text class="maskFootCancel" bindtap="exit">取消</text>
+		</view>
+	</view>
+</view>
+</view>

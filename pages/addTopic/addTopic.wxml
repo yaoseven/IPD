@@ -1,0 +1,109 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
+<scroll-view scroll-y="true" class="add-project-box">
+  <view class="form-box">
+
+    <view class="form-item-name">
+      <input  class="input-box"
+              hidden="{{wxCropperFlag}}"
+              placeholder="请输入话题名称（必填）"
+              data-name="topicTitle"
+              value="{{topicTitle}}"
+              maxlength="20"
+              bindinput="inputChange"
+              type="text"
+               name=""/>
+    </view>
+
+    <view class="form-item-desc">
+      <textarea class="input-box"
+                hidden="{{wxCropperFlag}}"
+                placeholder="请输入话题描述（必填，支持@人员）"
+                value="{{topicContent}}"
+                bindinput="descChange"/>
+    </view>
+
+    <view class="form-item">
+      <text class="label-box topic">话题类型</text>
+      <picker class="input-box"
+              range="{{catelogNames}}"
+              value="{{index}}"
+              bindchange="catelogChange">
+          <view class="picker" wx:if="{{catelogName}}">
+            {{catelogName}}
+         </view>
+          <view wx:else class="picker-default">
+             请选择
+          </view>
+      </picker>
+    </view>
+
+  </view>
+
+    <view class="comment-image-box">
+      <view class="item-comment-image {{index % 3 === 2 ? 'no-margin-right' : ''}}"
+          wx:for="{{imageList}}"
+          wx:key="index">
+        <image src="{{item.filePath}}"></image>
+        <view class="delete-box" catchtap="deleteImg" data-index="{{index}}">
+            x
+        </view>
+      </view>       
+    </view>
+    <view class="uploadFile"  wx:if="{{uploadFile}}">
+      <view class='fileTitle'>
+        <view class='title'>附件:</view>
+        <image class='fileTitleImg' src='/images/addfile.png'></image>
+      </view>  
+      <view class='file' wx:for="{{selectFileList}}" wx:key="{{index}}">
+        <view class="file-img-box">
+          <image class='fileImg'
+                  wx:if="{{item.fileOrFolderType == 'rar' || item.fileOrFolderType == 'zip'}}"      
+                  src='/images/rar.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType == 'pdf'}}"    
+                src='/images/pdf.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType == 'doc' || item.fileOrFolderType == 'wsp' || item.fileOrFolderType == 'docx'}}"    
+                src='/images/word.png'></image>    
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType == 'jpg' || item.fileOrFolderType == 'jpeg'}}"    
+                src='/images/jpg.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType == 'png'}}"    
+                src='/images/jpg.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType=='xls' || item.fileOrFolderType=='xlsx'}}" 
+                src='/images/excel.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType=='mp4' || item.fileOrFolderType=='avi'}}" 
+                src='/images/video.png'></image>
+
+          <image class='fileImg'
+                wx:else
+                src='/images/other.png'></image>
+        </view>   
+        <view class='fileName'>{{item.fileOrFolderName}}</view>
+        <view class='delFile' data-index="{{index}}" bindtap='delFile'>
+          <icon type="cancel"
+                    size="16"
+                    color="#333"/>
+        </view>     
+      </view>
+    </view>
+  <view class="topFoot">
+    <view class="topFoot-img {{imageList.length % 3 === 2 ? 'no-margin-right' : ''}}" bindtap="uploadImage">
+    <image src='/images/fileImg.png'></image>
+    </view>
+    <view class="topFoot-addfile">
+      <image bindtap="addfile" src='/images/addfile.png'></image>
+    </view>
+    <view class="topFoot-btn" bindtap="saveTopic">发表</view>
+  </view>
+</scroll-view>

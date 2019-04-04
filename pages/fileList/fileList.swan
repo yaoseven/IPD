@@ -1,0 +1,165 @@
+<!--pages/fileList/fileList.wxml-->
+<view class="file-big-box" bindtap="hiddenModal">
+    <!-- 搜索 -->
+    <navigator class="search-bar-box" url="/pages/search/search?projectCode={{projectCode}}&curIndex=1">
+      <view class="search-bar">
+        <view class="search">
+          <icon class="search-icon start" type="search" size="15" color="#B2B2B2"></icon>
+          <input class="search-input" disabled="true" type="text" placeholder="搜索"/>
+        </view>
+      </view>
+    </navigator>
+    <scroll-view class="scroll-box" scroll-y="true"
+     bindscrolltolower="scrollLower">
+    <!-- 文件夹 -->
+    <view class="fileList-box">
+      <view wx:if="{{projectList}}"
+            wx:for="{{projectList}}"
+            wx:key='index'
+            class='file'
+            bindlongpress="longtap"
+            bindtap='goToDetail'
+            data-item="{{item}}">
+
+          <image class='fileImg'
+                src='/images/file.png'></image>
+
+          <text class='fileName'>{{item.folderTitle}}</text>
+          <!-- <text class='fileSize'>123kb</text>    -->
+      </view>
+      <!-- 文件 -->
+      <view wx:if="{{listFile}}" wx:for="{{listFile}}" class='file'
+       wx:key='index'
+        bindlongpress="longtapFile"
+        bindtap='showFile'
+        data-items="{{item}}"
+        data-path="{{item.filePath}}"
+        data-type="{{item.fileType}}">
+        <image class='fileImg'
+                  wx:if="{{item.fileType == 'rar' || item.fileType == 'zip'}}"
+                  src='/images/rar.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileType == 'pdf'}}"    
+                src='/images/pdf.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileType == 'doc' || item.fileType == 'wsp' || item.fileType == 'docx'}}"    
+                src='/images/word.png'></image>    
+
+          <image class='fileImg'
+                wx:elif="{{item.fileType == 'jpg' || item.fileType == 'jpeg'}}"    
+                src='/images/jpg.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileType == 'png'}}"    
+                src='/images/jpg.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileType=='xls' || item.fileType=='xlsx'}}" 
+                src='/images/excel.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileType=='mp4' || item.fileType=='avi'}}" 
+                src='/images/video.png'></image>
+
+          <image class='fileImg'
+                wx:else
+                src='/images/other.png'></image>
+
+          <text class='fileName'>{{item.fileOrFolderName}}</text>
+          <!-- <text class='fileSize'>123kb</text>    -->
+      </view>
+
+      <view class="null-box" wx:if="{{!projectList.length && !listFile.length}}">
+          暂无资料
+      </view>
+    </view>
+  </scroll-view>
+
+</view>
+
+<view wx:if="{{suspension}}" class="suspensionHide" style="top: {{modalTop}}px;">
+	<view class="suspen-btn-box">
+		<view catchtap="addFiles" class="suspension">重命名</view>
+		<view catchtap="copy" class="suspension">复制</view>
+		<view catchtap="remove" class="suspension">移动</view>
+		<view catchtap="authorization" class="suspension">授权</view>
+		<view catchtap="delete" class="suspension" style="border-right: none">删除</view>
+	</view>
+</view>
+
+<view wx:if="{{suspensionOne}}" class="suspensionHide" style="top: {{modalTop}}px;">
+	<view class="suspen-btn-box">
+  		<view catchtap="addFilesOne" class="suspension">重命名</view>
+  		<view catchtap="copyOne" class="suspension">复制</view>
+  		<view catchtap="removeFile" class="suspension">移动</view>
+  		<view catchtap="deleteOne" class="suspension" style="border-right: none">删除</view>
+  	</view>
+</view>
+
+
+
+<view class="add-box" catchtap="addFile" wx:if="{{projectData.projectOwner == customerCode}}">
+    <image src="../../images/add-icon.png" mode="widthFix"></image>
+</view>
+
+<view class="return-box"
+      bindtap="goBackList"
+      wx:if="{{allId.length}}"
+      style="bottom: {{projectData.projectOwner == customerCode ? 160 : 120}}rpx;">
+   <image src="../../images/return-icon.png" mode="widthFix"></image>
+</view>
+
+
+<!-- 新建文件夹 -->
+<view wx:if="{{newFile}}" class="mask">
+	<view class="maskIndex">
+		<view class="maskInfo">
+	      <image class='fileImgs' src='/images/file.png'></image>
+	      <input type="text" class="name" name="" bindinput="bindKeyInput" placeholder="新建文件夹"></input>
+		</view>
+		<view class="maskFoot">
+			<text class="maskFootSure" bindtap="Preservation">保存</text>
+			<text class="maskFootCancel" bindtap="exit">取消</text>
+		</view>
+	</view>
+</view>
+<!-- 文件夹重命名 -->
+<view wx:if="{{newFiles}}" class="mask">
+	<view class="maskIndex">
+		<view class="maskInfo">
+	      <image class='fileImgs' src='/images/file.png'></image>
+	      <input type="text" class="name" name="" bindinput="bindKeyInputFolder" placeholder="新建文件夹" value="{{folderTitle}}"></input>
+		</view>
+		<view class="maskFoot">
+			<text class="maskFootSure" bindtap="removeName">保存</text>
+			<text class="maskFootCancel" bindtap="exit">取消</text>
+		</view>
+	</view>
+</view>
+<!-- 文件重命名 -->
+<view wx:if="{{newFilesOne}}" class="mask">
+	<view class="maskIndex">
+		<view class="maskInfo">
+	      <image class='fileImgs' src='/images/file.png'></image>
+	      <input type="text" class="name" name="" bindinput="bindKeyInputFile" placeholder="新建文件夹" value="{{folderTitle}}"></input>
+		</view>
+		<view class="maskFoot">
+			<text class="maskFootSure" bindtap="removeNameOne">保存</text>
+			<text class="maskFootCancel" bindtap="exit">取消</text>
+		</view>
+	</view>
+</view>
+
+<video wx:if='{{videoUrl}}' 
+        id='videoPlay'
+        class="play-video-box"
+        show-center-play-btn="{{false}}" 
+        src='{{videoUrl}}' 
+        controls="true" 
+        objectFit="cover">
+    <cover-view class="deleteImg">
+      <cover-image src="../../../images/delete.png" bindtap='delVideo'></cover-image>
+    </cover-view>
+</video>

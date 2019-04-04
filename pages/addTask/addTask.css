@@ -1,0 +1,194 @@
+scroll-view {
+  background: #F6F7FA;
+  min-height: 100%;
+  width: 100%;
+}
+
+.add-task-box{
+  padding: 0 30rpx;
+}
+
+.add-task-box .form-box {
+  background: none;
+}
+
+.add-task-box .comment-image-box {
+  padding: 0;
+  margin-top: 0;
+}
+.add-task-box .form-box .form-item {
+  padding: 20rpx 0;
+}
+
+.add-task-box .form-box .form-item .reset-label {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #C7CAD3;
+  letter-spacing: 0.3px;
+  text-align: justify;
+}
+
+.add-task-box .form-box .form-item-title {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #333333;
+  margin-top: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-task-box .form-box .form-item-title .task-arrow {
+  width: 36rpx;
+  height: 36rpx;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+  margin-left: 20rpx;
+}
+
+.add-task-box .form-box .form-item-title view {
+  flex: 1;
+}
+
+.add-task-box .form-box .form-item-title .down {
+  transform: rotate(-180deg);
+}
+
+.add-task-box .form-box .textarea {
+  padding: 30rpx 0;
+  border-bottom: 0;
+}
+
+.add-task-box .form-box .textarea textarea {
+  height: 300rpx;
+  padding: 20rpx;
+  background: #fff;
+  border: 2rpx solid #D8D8D8;
+}
+
+.add-task-box .topFoot {
+  padding: 30rpx 0 40rpx;
+  border-bottom: 2rpx solid #D8D8D8;
+  display: flex;
+  align-items: center;
+}
+
+.add-task-box .topFoot view {
+  margin-right: 30rpx;
+  font-size: 40rpx;
+  color: #666;
+}
+
+.add-task-box .topFoot image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+}
+
+.uploadFile {
+  padding-bottom: 20rpx
+}
+
+.uploadFile .fileTitle{
+  display: flex;
+  padding: 20rpx 0;
+  align-items: center;
+}
+
+.uploadFile .fileTitle .title {
+  color: #C7CAD3;
+  font-size: 28rpx;
+  float: left
+}
+
+.uploadFile .fileTitle .fileTitleImg{
+  width: 26rpx;
+  height:26rpx;
+  position:absolute;
+  right:30rpx;
+}
+
+.uploadFile .file {
+  height: 48rpx;
+  width: 100%;
+  display: flex;
+  margin: 20rpx 0;
+  align-items: center;
+}
+
+.uploadFile .file .file-img-box {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 20rpx;
+}
+
+.uploadFile .file .file-img-box .fileImg{
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.uploadFile .file .fileName{
+  font-size: 24rpx;
+  color: #7E8495;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.uploadFile .file .delFile{
+  width: 60rpx;
+  height: 40rpx;
+  text-align: right;
+  line-height: 40rpx;
+}
+
+
+.delete-box {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 28rpx;
+  height: 28rpx;
+  background: #29C37F;
+  text-align: center;
+  font-size:16rpx;
+  color:#ffffff;
+  line-height:28rpx;
+  font-weight:bold;
+}
+.person-list {
+  margin-top: 40rpx;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  padding: 10rpx 0;
+}
+
+.person .task-arrow {
+  width: 36rpx;
+  height: 36rpx;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+  margin-left: 20rpx;
+}
+.personImg{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 30rpx;
+}
+.personImg image{
+  width:100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.personName{
+  flex: 1;
+}
+
+.task-arrow {
+}
+

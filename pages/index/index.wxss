@@ -1,0 +1,129 @@
+/* pages/messageIndex/messageIndex.wxss */
+.messageCon {
+    width: 100%;
+    background: #F6F7FA;
+    height: 100%;
+}
+.bgImg {
+    position: fixed;
+    left: 0;
+    top:0;
+}
+.navigator-color{
+    background-image: linear-gradient(90deg, rgba(249,249,249,0.00) 0%, #F0F0F0 100%);
+    width:240rpx;
+    height: 90rpx;
+    position: fixed;
+    right: 0rpx;
+    top: 0rpx;
+    z-index: 10;
+}
+.nav-box {
+    white-space: nowrap;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+    border-bottom: 2rpx solid #f0f0f0;
+}
+.nav-item {
+    display: inline-block;
+    box-sizing: border-box;
+    line-height: 86rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #7B8294;
+    letter-spacing: -0.68rpx;
+    text-align: center;
+    padding: 0 30rpx;
+}
+.active {
+    font-size: 34rpx;
+    color: #29C37F;
+    letter-spacing: -0.82rpx;
+    text-align: center;
+}
+.line {
+    width:52rpx;
+    height: 4rpx;
+    background: #29C37F;
+    border-radius: 3rpx;
+    position: relative;
+    left: 50%;
+    margin-left: -26rpx;
+}
+.nav-edit {
+    width:80rpx;
+    height: 90rpx;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+}
+.nav-search {
+    width:80rpx;
+    height: 90rpx;
+    position: fixed;
+    right: 80rpx;
+    top: 0rpx;
+    z-index: 10;
+}
+.nav-edit image {
+    width: 40rpx;
+    height: 32rpx;
+    margin: 28rpx auto;
+}
+.nav-search image {
+    width: 32rpx;
+    height: 32rpx;
+    margin: 28rpx auto;
+}
+
+
+.messege-con {
+    width: 100%;
+    /* padding-bottom: 110rpx; */
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 88rpx;
+    height: 100%;
+}
+
+.discuss {
+    padding: 40rpx;
+    position: relative;
+    background: #fff;
+}
+
+.discuss .discuss-replay {
+  margin-top: 26rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #7B8294;
+  letter-spacing: 0.44rpx;
+}
+
+.discuss .discuss-replay text {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #151515;
+  letter-spacing: 0.44px;
+  line-height: 34rpx;
+}
+.add-box-project{
+    position:fixed;
+    right:40rpx;
+    bottom:140rpx;
+    width:77rpx;
+    height:77rpx;
+    background:#38D791;
+    border-radius:50%;
+    align-items:center;
+    display:flex;
+    justify-content:center;
+}
+.add-box-project image{
+    width:58rpx;
+    height:45rpx;
+}

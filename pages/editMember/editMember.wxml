@@ -1,0 +1,41 @@
+<scroll-view scroll-y="true"
+            class="person-box">
+    <view class="message-box" wx:if="{{memberList.length}}">长按左划删除成员</view>
+    <left-move wx:if="{{memberList.length}}"
+              wx:for="{{memberList}}"
+              wx:key="{{index}}"
+              item-code="{{item.customerCode}}"
+              item-index="{{index}}"
+              now-index="{{nowIndex}}"
+              catchdelete="goOutProject"
+              catchsetindex="setNowIndex">
+        <view class="team-item">
+          <view class="item-left" wx:if="{{index < 3}}">
+            <image wx:if="{{index == 0}}" src="../../images/rank-one.png"></image>
+            <image wx:if="{{index == 1}}" src="../../images/rank-two.png"></image>
+            <image wx:if="{{index == 2}}" src="../../images/rank-three.png"></image>
+          </view>
+          <view class="item-left" wx:else>{{index + 1}}</view>
+
+          <image class="item-avatar" src="{{item.customerWxImg}}"></image>
+
+          <view class="item-center">
+            <view class="user-name">{{item.customerWxNickname}}</view>
+            <view class="user-box">
+              <view>{{item.positionName}}</view>
+              <view>{{item.organizeCname}}</view>
+            </view>     
+          </view>
+
+          <view class="item-right">
+            <view class="user-point">积分{{item.contributionValue}}</view>
+            <!-- <image src="../../images/down-arrow.png"></image> -->
+          </view>
+
+        </view>
+    </left-move>
+    <view class="null-box" wx:if="{{!memberList.length}}">
+      暂无人员
+    </view>
+</scroll-view>
+

@@ -1,0 +1,112 @@
+/* pages/addMeeting/addMeeting.wxss */
+page{
+  background: #f6f7fa
+}
+.box{
+  padding: 0 50rpx;
+  margin-bottom:20rpx;
+  background: #fff
+}
+.item{
+  /*height: 94rpx;*/
+  border-bottom: 2rpx solid #F0F0F0;
+  display: flex;
+  padding: 26rpx 0;
+  font-size: 30rpx;
+}
+.itemStar{
+  border-bottom: 2rpx solid #F0F0F0;
+  display: flex;
+  padding: 26rpx 0;
+  font-size: 30rpx;
+  
+}
+.delete-box {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20rpx;
+  height: 20rpx;
+  background: #29C37F;
+  text-align: center;
+  font-size:16rpx;
+  color:#ffffff;
+  line-height:20rpx;
+  font-weight:bold;
+}
+.mark{
+  padding: 0 20rpx;
+}
+.top{
+  margin-top:25rpx
+}
+.peopleList{
+  margin-right:32rpx;
+  margin-top:34rpx;
+  /*margin:35rpx 32rpx 0 0;*/
+  float: left;
+  width: 68rpx;
+  position: relative;
+}
+
+.peopleList:nth-of-type(2),.peopleList:nth-of-type(1),.peopleList:nth-of-type(3),.peopleList:nth-of-type(4)
+{
+  margin-top:0rpx;
+}
+.peopleList image{
+  width:68rpx;
+  height:68rpx;
+  margin:12rpx auto 0 auto;
+  border-radius: 50%
+
+}
+.peopleName {
+  color:#666;
+  font-size:22rpx;
+  text-align: center;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+
+}
+.itemText{
+  height: 200rpx;
+  display: flex;
+  padding: 26rpx 0;
+  font-size: 30rpx;  
+}
+.itemText textarea{
+  height:160rpx;
+}
+.itemTitle{
+  color: #888888;
+  font-size: 30rpx;
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  max-height: 110rpx;
+
+}
+.itemContent{
+  color: #333;
+  margin-left: 118rpx;
+}
+.share{
+  font-size:34rpx;
+  color:#fff;
+  background:#29C37F;
+  border-radius:10rpx;
+  margin-top:160rpx;
+  width:668rpx;
+
+}
+.picker{
+  width: 100%;
+}
+.inputBox{
+  width:100%;
+  height:60rpx;
+}
+.box .item:last-child{
+  border-bottom:none
+}

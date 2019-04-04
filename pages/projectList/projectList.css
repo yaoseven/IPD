@@ -1,0 +1,74 @@
+.index-box-bg {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+.index-box {
+	/* background: rgba(0,0,0,0.4); */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: auto;
+}
+.index-flex-box{
+  padding: 0 40rpx;
+}
+
+.add-btn {
+	position: absolute;
+	bottom: 60rpx;
+	right: 0;
+	width: 80rpx;
+	height: 80rpx;
+}
+
+.index-box .index-item {
+	display: flex;
+	align-items: center;
+	padding: 40rpx 0;
+}
+
+.index-box .index-item image {
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 50%;
+}
+
+.index-box .index-item .right-box {
+	flex: 1;
+	margin-left: 20rpx;
+}
+
+.index-box .index-item .right-box .project-title {
+	display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.index-box .index-item .right-box .project-title .title {
+	font-family: PingFangSC-Medium;
+	font-size: 32rpx;
+	color: #000;
+  font-weight: bold
+}
+
+.index-box .index-item .right-box .project-title .redact {
+    width:60rpx;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+.index-box .index-item .right-box .project-title .redact .redact-image{
+    width:36rpx;
+    border-radius:0;
+}
+
+
+.index-box .index-item .right-box .desc {
+	margin-top: 20rpx;
+	font-family: PingFangSC-Medium;
+	font-size: 24rpx;
+	color: #000;
+	text-align: justify;
+}

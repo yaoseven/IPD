@@ -1,0 +1,31 @@
+<image class="index-box-bg" src="../../images/messegeIndexBg.png"></image>
+<scroll-view class="index-box" scroll-y="true" bindscrolltolower="scrollLower">
+  <view class="index-flex-box">
+    <view class="index-item"
+          data-project-code="{{item.projectCode}}"
+          bindtap="goToMessage"
+               wx:for="{{projectList}}"
+               wx:key="{{index}}">
+        <image src="{{item.projectCoverPath}}"></image>
+        <view class="right-box">
+          <view class="project-title">
+            <view class="title">{{item.projectName}}</view>
+            <view class="redact"
+                  wx:if="{{customerCode == item.projectOwner}}"
+                  catchtap="goToEdit"
+                  data-project-code="{{item.projectCode}}">
+                <image class="redact-image" src="../../images/edit.png" mode="widthFix"></image>
+            </view>
+          </view>
+            
+            <view class="desc">{{item.projectDesc}}</view>
+        </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="add-box" catchtap="addProject">
+    <image src="../../images/add-icon.png" mode="widthFix"></image>
+</view>
+
+
+

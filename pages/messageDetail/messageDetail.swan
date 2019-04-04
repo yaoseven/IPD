@@ -1,0 +1,66 @@
+<view wx:if="{{noAuthority === 'true'}}" style="height: 100%;">
+  <scroll-view scroll-y class='message-detail-box' bindscrolltolower="scrollLower">
+    <view class='discuss'>
+      <discuss-item discuss-item="{{topicData}}"
+                    is-detail="true"
+                    no-icon='true'
+                    bindshowfile="showFile"></discuss-item>
+      <view class='discuss-replay'>
+        回复 <text>{{topicData.commentNum}}</text>
+      </view>
+    </view>
+    <comment comment-list="{{commentList}}"
+              editor-code="{{topicData.customerCode}}"
+              customer-code="{{customerCode}}"
+              bindreplay="replayComment"
+              binddelete="deleteComment"
+              bindshowfile="showFile"
+              wx:if="{{commentList.length}}"></comment>
+  </scroll-view>
+  <view class='bottom-box'>
+    <view class="left-box">
+      <view bindtap="goIndex">
+        <image src="../../images/shouye.png" mode="widthFix"></image>
+      </view>
+      <view wx:if="{{customerCode == topicData.customerCode}}" class="delete-icon"
+            bindtap='deleteConfirm'>
+        <image src="../../images/delete-gray.png"></image>
+      </view>
+      <view wx:if="{{customerCode != topicData.customerCode}}" class="delete-icon disabled">
+        <image src="../../images/delete-gray.png"></image>
+      </view>
+      <view>
+        <image src="../../images/share.png"></image>
+        <button open-type="share" class="reset-button"></button>
+      </view>
+    </view>
+    <view class="add-comment" bindtap='replayTopic'>评论</view>
+  </view>
+</view>
+<view wx:if="{{noAuthority === 'false'}}">
+  您没有权限查看该话题
+</view>
+<!-- <view class="time-bg-box" wx:if="{{deleteConfirmTemplate}}" bindtap="hiddenTime"></view>
+<view wx:if="{{deleteConfirmTemplate}}" class="time-box {{deleteConfirmTemplate ? 'show-time-box' : ''}}">
+  <view class="time">
+    <view class="confirm-title">确定删除这项讨论吗?</view>
+    <view class="button-box">
+      <view class="cancel-btn">取消</view>
+      <view class="confirm-btn">确定</view>
+    </view>
+  </view>
+</view> -->
+
+<video wx:if='{{videoUrl}}' 
+        id='videoPlay'
+        class="play-video-box"
+        show-center-play-btn="{{false}}" 
+        src='{{videoUrl}}' 
+        controls="true" 
+        objectFit="cover">
+    <cover-view class="deleteImg">
+      <cover-image src="../../images/delete.png" bindtap='delVideo'></cover-image>
+    </cover-view>
+</video>
+
+

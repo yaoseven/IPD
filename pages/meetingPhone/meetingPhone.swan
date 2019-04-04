@@ -1,0 +1,31 @@
+<!--pages/meetingPhone/meetingPhone.wxml-->
+<view class="phone-title">电话会议接入号码</view>
+<view class='box'>
+  <view class='item' wx:for='{{allTel}}' wx:if="{{item.dictKeyCode == 'telemeeting_access_number_chinese'}}" wx:key="{{index}}">
+    <view class='item-title'>中国员工</view>
+    <view class='item-phone'>{{item.dictKeyValue}}</view>
+    <view class='item-call' data-chinaTel='{{item.dictKeyValue}}' bindtap='chinaTel'>拨打</view>
+  </view>
+  <view class='item' wx:for='{{allTel}}' wx:if="{{item.dictKeyCode == 'telemeeting_access_number_english'}}" wx:key="{{index}}">
+    <view class='item-title'>外国员工</view>
+    <view class='item-phone'>{{item.dictKeyValue}}</view>
+    <view class='item-call' data-foreigntel='{{item.dictKeyValue}}' bindtap='foreigntel'>拨打</view>
+  </view>
+</view>
+<view class='box'>
+  <view class='item'>
+    <view class='item-title'>会议密码</view>
+    <view class='item-phone'>{{password.internalMeetingNum}}</view>
+    <view class='item-call' data-text='{{password}}' bindtap='copy'>复制</view>
+  </view>
+</view>
+<view class='box'>
+  <view class='item'>
+    <view class='itemDetail-title'>会议标题</view>
+    <view class='itemDetail-phone'>{{password.meetingTitle}}</view>
+  </view>
+  <view class='item'>
+    <view class='itemDetail-title'>会议描述</view>
+    <view class='itemDetail-phone'>{{password.meetingDesc}}</view>
+  </view>
+</view>

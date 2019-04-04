@@ -1,0 +1,61 @@
+/* pages/meetingPhone/meetingPhone.wxss */
+page{
+  background: #f6f7fa
+}
+.box{
+  padding: 0 50rpx;
+  margin-bottom:20rpx;
+  background: #fff
+}
+.item{
+  border-bottom: 2rpx solid #F0F0F0;
+  display: flex;
+  padding: 26rpx 0;
+  font-size: 30rpx;
+  position: relative;
+}
+.phone-title{
+	padding: 0 50rpx;
+	color: #7E8495;
+	font-size: 28rpx;
+	height: 94rpx;
+	display: flex;
+	line-height: 94rpx;
+}
+.item-title{
+	color: #666;
+	font-size: 30rpx
+}
+.itemDetail-title{
+	flex:3;
+	color: #666;
+	font-size: 30rpx
+}
+.itemDetail-phone{
+	flex:9;
+	font-size: 30rpx;
+	color: #333
+}
+.item-call{
+	background:#EDEEF2;
+	border-radius: 22rpx;
+	color: #7E8495;
+	font-size: 24rpx;
+	width: 88rpx;
+	text-align: center;
+	height: 40rpx;
+	line-height: 40rpx;
+	position: absolute;
+	right: 0rpx;
+}
+.item-phone{
+	margin-left: 46rpx;
+	font-size: 30rpx;
+	color: #333
+}
+/*.item-title nth-of-type(1){
+	border-bottom: 2rpx solid #f0f0f0
+}*/
+.box .item:last-child{
+	border-bottom:none
+}

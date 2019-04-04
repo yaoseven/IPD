@@ -1,0 +1,30 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
+<view class="bg-box" bindtap="hiddenForm"></view>
+
+<view class="select-box">
+    <scroll-view class="scroll-box" scroll-y="true">
+        <view class='person' 
+                wx:for="{{memberList}}"
+                wx:key="{{index}}"
+                bindtap='itemSelected'
+                data-item="{{item}}">
+            <view class='personImg'>
+              <image src='{{item.customerWxImg}}'></image>
+            </view>
+            <view class='personName'>{{item.customerWxNickname}}</view> 
+            <view class='changebox'>
+                <icon type="success_no_circle"
+                    size="13"
+                    class='success'
+                    wx:if="{{tools.arrIndexOf(selectCodeList, item.customerCode)}}"/>
+            </view>
+        </view>
+
+        <view class="null-box" wx:if="{{!memberList.length}}">无可选人员</view>
+    </scroll-view>
+
+    <view class="btn-bottom-box">
+        <button type="primary" bindtap="confirmSelect">确定</button>
+    </view>
+</view>

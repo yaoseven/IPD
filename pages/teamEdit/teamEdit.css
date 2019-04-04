@@ -1,0 +1,228 @@
+.groupDetail{
+  width:100%;
+  height: 100%;
+  background: #F6F7FA;
+  display: flex;
+  flex-direction: column;
+}
+
+.groupDetail_top{
+  width:100%;
+  height: 300rpx;
+  background: #ccc;
+}
+
+.con-top-box {
+  position: relative;
+  display: flex;
+  flex-direction:column;
+  padding: 100rpx 0 34rpx;
+  align-items: center;
+}
+
+.con_top{
+  position: relative;
+  margin: 0 30rpx;
+  margin-top: -180rpx;
+  background: #ffffff;
+  border-radius: 5rpx;
+}
+
+.con_top .title{
+  line-height: 75rpx;
+  margin-top: 0;
+  font-size: 34rpx;
+  color: #333333;
+}
+
+.group_logo{
+  width:112rpx;
+  height: 112rpx;
+  margin-top:-150rpx;
+  border-radius: 10rpx;
+}
+
+.wrap{
+  width:100%;
+  height: 300rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(24,28,41,0.90);
+}
+
+.clubDetailBg{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 304rpx;
+  height: 215rpx;
+}
+
+.con_top .create-box {
+  font-size: 24rpx;
+}
+
+.con_top .introduce{
+ margin-top: 0;
+ padding: 0 30rpx;
+ font-family: PingFangSC-Regular;
+ font-size: 24rpx;
+ color: #666666;
+ letter-spacing: 0.44rpx;
+ text-align: center;
+ margin-bottom: 30rpx;
+}
+
+.member_count view{
+  height: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.con_top .member{
+  float: left;
+  width:40rpx;
+  height: 40rpx;
+  margin-left:-20rpx;
+}
+
+.con_top .member image{
+  width:100%;
+  height: 100%;
+  border-radius: 50%;
+  border:2rpx solid #fff;
+}
+
+.member_count .count{
+  float: left;
+  margin-left: 30rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  color: #333333;
+  letter-spacing: 0.44rpx;
+}
+
+.con_cen{
+  flex: 1;
+  display: flex;
+  flex-direction:column;
+  background: #ffffff;
+  margin: 20rpx 30rpx 0;
+  border-radius: 5rpx;
+}
+
+.con_cen .clubRule{
+  color: #000;
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  font-size: 28rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+.con_cen .rule-box {
+  font-size: 28rpx;
+  color: #666666;
+  text-align: justify;
+  line-height: 40rpx;
+  padding: 20rpx;
+  overflow: auto;
+  padding-bottom: 100rpx;
+}
+
+.con_foot{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 20rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.con_foot button{
+  width:360rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 34rpx;
+  background: #29C37F;
+  border-radius: 48rpx;
+  margin: auto;
+}
+
+.ewm{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 10rpx;
+  top:10rpx;
+}
+
+.ruleLine{
+  background: #29C37F;
+  border-radius: 1.5px;
+  width:6rpx;
+  height: 28rpx;
+  margin:6rpx 20rpx 0 0;
+}
+
+.clubBoss {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20rpx 30rpx 0;
+  height: 100rpx;
+  font-size: 32rpx;
+  color: #666666;
+  padding: 0 40rpx;
+  background: #ffffff;
+  border-radius: 5rpx;
+}
+
+.clubBoss image{
+  width:16rpx;
+  height: 26rpx;
+  margin-left: 20rpx;
+}
+
+
+
+.qr-bg-box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 8;
+  background: rgba(0,0,0,0.6);
+}
+
+.qr-box {
+  position:fixed;
+  z-index:100;
+  left:0;
+  bottom: -400rpx;
+  width: 400rpx;
+  height: 400rpx;
+  transition:all 0.3s ease;
+}
+
+.qr-box.show-qr-box {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.qr-box .qr {
+  width: 400rpx;
+  height: 400rpx;
+  background: #fff;
+  padding: 20rpx;
+}
+
+.qr-box .qr image {
+  height: 100%;
+}

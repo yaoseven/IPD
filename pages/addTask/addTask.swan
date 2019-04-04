@@ -1,0 +1,214 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
+<scroll-view scroll-y="true">
+  <view class="add-task-box">
+    <view class="form-box">
+      <view class="form-item">
+          <input class="input-box"
+                placeholder="请输入任务标题（必填）"
+                data-name="taskTitle"
+                value="{{taskTitle}}"
+                maxlength="20"
+                bindinput="inputChange"/>
+      </view>
+
+      
+
+      <view class="form-item textarea">
+        <textarea class="input-box"
+                  data-name="taskDesc"
+                  hidden="{{wxCropperFlag}}"
+                  placeholder="请输入任务详情"
+                  value="{{taskDesc}}"
+                  maxlength="80"
+                  bindinput="inputChange"/>
+      </view>
+
+      <view class="comment-image-box">
+        <view class="item-comment-image {{index % 3 === 2 ? 'no-margin-right' : ''}}"
+            wx:for="{{imageList}}"
+            wx:key="index">
+          <image src="{{item.attachmentPath}}"></image>
+          <view class="delete-box" catchtap="deleteImg" data-index="{{index}}">
+              -
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="uploadFile"  wx:if="{{selectFileList.length}}">
+      <view class='fileTitle'>
+        <view class='title'>附件:</view>
+        <image class='fileTitleImg' src='/images/addfile.png'></image>
+      </view>  
+      <view class='file' wx:for="{{selectFileList}}" wx:key="{{index}}">
+        <view class="file-img-box">
+          <image class='fileImg'
+                  wx:if="{{item.fileOrFolderType == 'rar' || item.fileOrFolderType == 'zip'}}"      
+                  src='/images/rar.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType == 'pdf'}}"    
+                src='/images/pdf.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType == 'doc' || item.fileOrFolderType == 'wsp' || item.fileOrFolderType == 'docx'}}"    
+                src='/images/word.png'></image>    
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType == 'jpg' || item.fileOrFolderType == 'jpeg'}}"    
+                src='/images/jpg.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType == 'png'}}"    
+                src='/images/jpg.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType=='xls' || item.fileOrFolderType=='xlsx'}}" 
+                src='/images/excel.png'></image>
+
+          <image class='fileImg'
+                wx:elif="{{item.fileOrFolderType=='mp4' || item.fileOrFolderType=='avi'}}" 
+                src='/images/video.png'></image>
+
+          <image class='fileImg'
+                wx:else
+                src='/images/other.png'></image>
+        </view>   
+        <view class='fileName'>{{item.fileOrFolderName}}</view>
+        <view class='delFile' data-index="{{index}}" bindtap='deleteFile'>
+          <icon type="cancel" size="16" color="#333"/>
+        </view>     
+      </view>
+    </view>
+
+    <view class="topFoot">
+        <image src='/images/fileImg.png' bindtap="uploadImage"></image>
+        <image bindtap="addfile" src='/images/addfile.png' bindtap="addFile"></image>
+    </view>
+
+    <view class="form-box">
+      <view class='form-item-title'>任务贡献值</view>
+      <view class="form-item">
+        <input class="input-box"
+                data-name="taskContribution"
+                placeholder="请输入任务贡献值（必填）"
+                disabled="{{disabled}}"
+                type='number'
+                value="{{taskContribution}}"
+                bindinput="inputChange"/>
+      </view>
+      
+      <block wx:for="{{deliveryList}}"
+              wx:key="{{index}}">
+        <view class='form-item-title'>
+          <view>交付要求</view>
+          
+          <image bindtap='deleteDelivery'
+                  class="task-arrow"
+                  src="/images/delete-arrow.png"
+                  data-index="{{index}}"></image>
+
+          <image bindtap='showOrHiddenDelivery'
+                  src="/images/task-arrow.png"
+                  class="task-arrow {{item.show ? '' : 'down'}}"
+                  data-index="{{index}}"></image>
+          
+        </view>
+
+        <view hidden="{{!item.show}}">
+          <view class="form-item textarea">
+            <textarea class="input-box"
+                      hidden="{{wxCropperFlag}}"
+                      placeholder="请输入交付描述（必填）"
+                      data-index="{{index}}"
+                      value="{{item.deliveryDesc}}"
+                      bindinput="deliveryDescChange"/>
+          </view>
+
+          <view class='form-item'>  
+              <text class="label-box reset-label">交附件格式<text>*</text></text>  
+              <picker class="input-box"
+                      range="{{formatList}}"
+                      value="{{item.deliveryFormatIndex}}"
+                      range-key="{{'id'}}"
+                      data-index="{{index}}"
+                      bindchange="deliveryFormatChange">
+                  <view class="picker" wx:if="{{item.deliveryFormat}}">
+                      {{item.deliveryFormat}}
+                  </view>
+                 <!-- <image class="arrow-box" src="../../images/arrow.png"></image> -->
+                  <view wx:else class="picker-default">
+                     请选择
+                  </view>
+              </picker>
+          </view>
+
+          <view class="form-item">
+              <text class="label-box reset-label">截止时间<text>*</text></text>
+              <picker class="input-box"
+                      mode="date"
+                      value="{{closingDate}}"
+                      data-index="{{index}}"
+                      bindchange="closingDateChange">
+                  <view class="picker" wx:if="{{item.closingDate}}">
+                    {{item.closingDate}}
+                  </view>
+                  <view wx:else class="picker-default">
+                      选择日期
+                  </view>
+              </picker>
+              <picker class="input-box"
+                      mode="time"
+                      value="{{closingTime}}"
+                      data-index="{{index}}"
+                      bindchange="closingTimeChange">
+                  <view class="picker" wx:if="{{item.closingTime}}">
+                    {{item.closingTime}}
+                  </view>
+                  <view wx:else class="picker-default">
+                      选择时间
+                  </view>
+              </picker>
+          </view>
+        </view>
+      </block>
+      <view class='form-item-title'>
+        <view>交付要求</view>   
+        <image bindtap='addDelivery'
+              class="task-arrow"
+              src="/images/task-add-arrow.png"></image>
+      </view>
+      
+      <view class="person-list"
+            wx:if="{{customerList.length}}">
+        <view class='person'
+              wx:for="{{customerList}}"
+              wx:key="{{index}}"
+              bindtap='itemSelected'
+              data-item="{{item}}">
+            <view class='personImg'>
+              <image src='{{item.customerWxImg}}'></image>
+            </view>
+            <view class='personName'>{{item.customerWxNickname}}</view> 
+            <image bindtap='deletePerson'
+                  class="task-arrow"
+                  src="/images/delete-arrow.png"
+                  data-index="{{index}}"></image>
+        </view>
+      </view>
+      <view class='form-item-title'>
+        <view>指派</view>   
+        <image bindtap='selectPerson'
+                class="task-arrow"
+                src="/images/task-add-arrow.png"></image>
+      </view>
+
+    </view>
+  </view>
+  <view class="form-box">
+  <view class="next-btn">
+    <view bindtap="save">保存</view>
+  </view>
+</view>
+</scroll-view>

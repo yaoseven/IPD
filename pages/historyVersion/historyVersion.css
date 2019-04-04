@@ -1,0 +1,482 @@
+/* pages/messageIndex/messageIndex.wxss */
+.messageCon {
+    width: 100%;
+    background: #F6F7FA;
+    height: 100%;
+}
+.bgImg {
+    position: fixed;
+    left: 0;
+    top:0;
+}
+.Enclosure-item{
+  display: flex;
+  width: 100%;
+  line-height: 50rpx
+}
+.Enclosure-itemImg{
+  flex: 4
+}
+.Enclosure-itemImg image{
+  width: 28rpx;
+  height: 28rpx;
+  float: left;
+  padding-top:  10rpx; 
+  padding-right: 20rpx;
+}
+.Enclosure-itemText{
+  flex: 8;
+  justify-content: right
+}
+.nav-box {
+    white-space: nowrap;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+    border-bottom: 2rpx solid #f0f0f0;
+}
+.nav-item {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    line-height: 46rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #7B8294;
+    letter-spacing: -0.68rpx;
+    text-align: center;
+    /* padding: 20rpx 0rpx; */
+}
+.navColor{
+  border-right:2rpx solid #EDEEF2;
+  margin: 20rpx 0
+}
+.active {
+    font-size: 30rpx;
+    color: #29C37F;
+    letter-spacing: -0.82rpx;
+    text-align: center;
+}
+.line {
+    width:52rpx;
+    height: 4rpx;
+    background: #29C37F;
+    border-radius: 3rpx;
+    position: relative;
+    left: 50%;
+    margin-left: -26rpx;
+}
+.nav-edit {
+    width:80rpx;
+    height: 90rpx;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+}
+.nav-edit image {
+    width: 40rpx;
+    height: 32rpx;
+    margin: 28rpx auto;
+}
+
+
+.messege-con {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    height: 100%;
+}
+
+.discuss {
+    padding: 40rpx;
+    position: relative;
+    background: #fff;
+}
+
+.discuss .discuss-replay {
+  margin-top: 26rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #7B8294;
+  letter-spacing: 0.44rpx;
+}
+
+.discuss .discuss-replay text {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #151515;
+  letter-spacing: 0.44px;
+  line-height: 34rpx;
+}
+.add-box-project{
+    position:fixed;
+    right:40rpx;
+    bottom:140rpx;
+    width:77rpx;
+    height:77rpx;
+    background:#38D791;
+    border-radius:50%;
+    align-items:center;
+    display:flex;
+    justify-content:center;
+}
+.add-box-project image{
+    width:58rpx;
+    height:45rpx;
+}
+
+
+
+.task{
+  padding:0rpx 40rpx;  
+  background: #fff;
+  margin-top:20rpx;
+}
+.taskFile{
+  padding:0rpx 0rpx;  
+  background: #fff;
+  margin-top:20rpx;
+}
+.task-fileItemChild{
+  width: 100%;
+  display: flex;
+  padding: 10rpx 0;
+}
+.task-title{
+  width: 100%;
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #333333;
+  text-align: justify;
+  flex: 9;
+}
+.column{
+  flex-direction: column;
+}
+.taskDescrib{
+  width: 100%;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #666666;
+  margin:20rpx 0;
+  text-align: justify;
+  line-height: 42rpx;
+}
+.Enclosure{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #333333;
+  display: flex
+}
+.taskContent{
+  width: 100%;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  text-align: justify;
+  line-height: 42rpx;
+}
+.task-upImg{
+  width: 100%;
+  height: 1;
+  margin:20rpx 0;
+}
+.task-Enclosure-box{
+  display: flex
+}
+.task-Enclosure-boxTitle{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #333333;
+  text-align: justify;
+  flex: 6;
+  line-height: 42rpx;
+}
+.confuseCopy{
+  width: 108rpx;
+  display: flex;
+  justify-content: center;
+}
+.confuseCopy image{
+  width: 36rpx;
+  height: 36rpx;
+  padding: 25rpx 0rpx;
+}
+.sureCopy{
+  width: 644rpx;
+  background: #29C37F;
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  text-align: center;
+  color: #FFFFFF;
+}
+.task-Enclosure-boxTime{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  flex: 6;
+  color: #FD9B03;
+  text-align: right;
+  line-height: 42rpx;
+}
+.task-contribution{
+  background: #FFF7EA;
+  border-radius: 8rpx;
+  flex: 3;
+  padding: 20rpx 10rpx;
+}
+.footNavigate{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  left: 0;
+  height: 84rpx;
+  line-height: 84rpx;
+  display: flex;
+}
+.confuse{
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #ABB1C5;
+  flex: 6;
+}
+.sure{
+  text-align: center;
+  background: #22CA80;
+  flex: 6;
+  color: #fff;
+  font-family: PingFangSC-Medium;
+  font-size: 15px;
+}
+.task-num{
+  font-family: PingFangSC-Medium;
+  font-size: 48rpx;
+  text-align: center;
+  color: #FD9B03;
+  line-height: 42rpx;
+  width: 100%
+}
+.task-num-text{
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #FD9B03;
+  width: 100%;
+  text-align: center;
+  line-height: 42rpx;
+}
+.task-item{
+  display: flex;
+  width: 100%;
+  padding: 40rpx 0;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+.task-fileItem{
+  display: flex;
+  width: 100%;
+  padding: 40rpx 40rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+.task-item-center{
+  flex: 9;
+  padding-left: 22rpx;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  word-break: break-all;
+}
+.task-item-right{
+  flex: 3;
+}
+.top-center{
+  margin-top:20rpx;
+}
+.task-headImg{
+  width: 68rpx;
+  float: left;
+  height: 68rpx;
+  border-radius: 50%;
+}
+.task-smallImg{
+  width: 48rpx;
+  float: left;
+  height: 48rpx;
+  border-radius: 50%;
+
+}
+.okImg{
+  width: 80rpx;
+  height: 80rpx;
+}
+.task-fileImg{
+  width: 68rpx;
+  float: left;
+  height: 68rpx;
+}
+.upArrow{
+  transform:rotate(270deg)
+}
+.downArrow{
+  transform:rotate(90deg)
+}
+.task-name{
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 42rpx;
+}
+.task-duty{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #7E8495;
+  width: 100%;
+}
+.task-small-name{
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #666666;
+}
+.task-small-duty{
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+}
+.peopleImg{
+  flex: 9
+}
+.timeFlex text{
+  flex: 6
+}
+.timeFlex image{
+  width:15rpx;
+  height:23rpx;
+  transform:rotate(90deg);
+  float: right;
+  margin-top: 7rpx;
+}
+.titleFlex{
+  flex: 7;
+}
+/* .peopleImg image{
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 20rpx;
+  float: left;
+  border-radius: 50%;
+  margin-bottom: 10rpx;
+} */
+
+.peopleImg image{
+  width: 48rpx;
+  height: 48rpx;
+  float: left;
+  border-radius: 50%;
+  margin-right: -20rpx;
+  display: block;
+}
+
+.task-count{
+  flex: 3;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #333333;
+}
+.task-count text{
+  color: #FD9B03;
+}
+.task-jiantou{
+  transform: rotate(45deg);
+  color: #7E8495;
+}
+.task-status{
+  line-height: 40rpx;
+  background: #FD9B03;
+  border-radius: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  text-align: center;
+  letter-spacing: -0.29px;
+  align-items: center;
+justify-content: center;
+}
+.task-Invitation{
+  flex: 6;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #7E8495;
+}
+.task-Invitation image{
+  width: 36rpx;
+  height: 36rpx;
+  float: left
+}
+.title{
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #333333;
+  text-align: justify;
+  line-height: 42rpx;
+  display: flex
+}
+.title-name{
+  flex: 6;
+}
+.title-history{
+  flex: 3
+}
+.title-upFile{
+  flex: 3
+}
+.task-Invitation text{
+  margin-left: 20rpx;
+}
+.task-error{
+  flex: 2;
+  background: #7E8495;
+  border-radius: 36rpx 40rpx 40rpx 36rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  margin-right: 20rpx;
+  text-align: center;
+}
+.task-agree{
+  flex: 2;
+  background: #22CA80;
+  border-radius: 36rpx 40rpx 40rpx 36rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  text-align: center;
+}
+.task-content{
+  padding:32rpx 0 24rpx 0;
+  font-size: 30rpx;
+  color:#333;
+  line-height: 42rpx;
+}
+.task-foot{
+  display: flex
+}
+.task-foot-time{
+  color:#FE8200;
+  flex: 1;
+  font-size:24rpx;
+  line-height: 42rpx;
+}
+.task-foot-status{
+  background: #29C37F;
+  border-radius: 10px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #FFFFFF;
+  letter-spacing: -0.29px;
+  padding: 4rpx 18rpx;
+}

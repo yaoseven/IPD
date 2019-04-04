@@ -1,0 +1,72 @@
+<!--pages/addMeeting/addMeeting.wxml-->
+<view class='box'>
+  <view class='item'>
+      <input bindinput="bindKeyInput" class="inputBox" maxlength="20" placeholder="请输入会议标题"></input>
+  </view>
+
+  <view class='itemText'>
+    <textarea maxlength="500" bindinput="bindKeyInputs" placeholder="请输入会议详情"></textarea>
+  </view>
+</view>
+
+<view class='box'>
+  <picker
+    mode="date"
+    value="{{date}}"
+    bindchange="bindDateChange">
+    <view class="picker">    
+      <view class='itemStar'>
+        <view class='itemTitle'>会议日期</view>
+        <view class='itemContent'> {{date}} </view>
+      </view>
+    </view>
+  </picker>
+
+  
+
+  <view class='item'>
+    <view class='itemTitle'>会议时间</view>
+      <picker
+        mode="time"
+        value="{{planBeginTime}}"
+        bindchange="bindTimeChange">
+        <view class="picker">    
+            <view class='itemContent'> {{planBeginTime}} </view>
+        </view>
+      </picker>
+      <view class='mark'>-</view>
+
+      <picker
+        mode="time"
+        value="{{planEndTime}}"
+        bindchange="bindTimeChanges"
+      >
+          <view class="picker">  
+              <view> {{planEndTime}} </view>
+          </view>
+       </picker>
+
+  </view>
+
+</view>
+<view class='box'>
+  <view class="item">
+    <view class="itemTitle">参与人员</view>
+    <view class="itemContent">
+      <view wx:for="{{selectItemList}}" class="peopleList">
+        <image src="{{item.customerWxImg}}"></image>
+        <view class="delete-box" catchtap="delPeople" data-index="{{index}}">
+            x
+        </view>
+        <view class="peopleName">{{item.customerWxNickname}}</view>
+      </view>
+
+      <view class="peopleList" catchtap="addPeople">
+        <image src="/images/addPeople.png"></image>
+      </view>
+
+    </view>
+  </view>
+</view>
+<button catchtap='meetSure' class='share'>确定</button>
+

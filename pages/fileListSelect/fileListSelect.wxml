@@ -1,0 +1,88 @@
+<!--pages/fileList/fileList.wxml-->
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
+<view class='titleManage'>
+  <view class='isconfirm'>
+    <view bindtap='noConfirm'>取消</view>
+    <view bindtap='addBtnFile'>确定</view>
+ </view>
+</view>
+
+<view class="file-big-box" bindtap="hiddenModal">
+  <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="scrollLower">
+    <view wx:if="{{projectList.length}}"
+          wx:for="{{projectList}}"
+          wx:key='index'
+          class='file'
+          bindlongpress="longtap"
+          bindtap='goToDetail'
+          data-item="{{item}}">
+
+        <image class='fileImg'
+              src='/images/file.png'></image>
+
+        <text class='fileName'>{{item.folderTitle}}</text>
+        <!-- <text class='fileSize'>123kb</text>    -->
+    </view>
+    <view wx:if="{{listFile.length}}" wx:for="{{listFile}}" class='file'
+      bindlongpress="longtapFile"
+      bindtap="selectFile"
+      data-items="{{item}}"
+      data-path="{{item.filePath}}"
+      wx:key='index'>
+
+      <image class='fileImg'
+                wx:if="{{item.fileOrFolderType == 'rar' || item.fileOrFolderType == 'zip'}}"      
+                src='/images/rar.png'></image>
+
+        <image class='fileImg'
+              wx:elif="{{item.fileOrFolderType == 'pdf'}}"    
+              src='/images/pdf.png'></image>
+
+        <image class='fileImg'
+              wx:elif="{{item.fileOrFolderType == 'doc' || item.fileOrFolderType == 'wsp' || item.fileOrFolderType == 'docx'}}"    
+              src='/images/word.png'></image>    
+
+        <image class='fileImg'
+              wx:elif="{{item.fileOrFolderType == 'jpg' || item.fileOrFolderType == 'jpeg'}}"    
+              src='/images/jpg.png'></image>
+
+        <image class='fileImg'
+              wx:elif="{{item.fileOrFolderType == 'png'}}"    
+              src='/images/jpg.png'></image>
+
+        <image class='fileImg'
+              wx:elif="{{item.fileOrFolderType=='xls' || item.fileOrFolderType=='xlsx'}}" 
+              src='/images/excel.png'></image>
+
+        <image class='fileImg'
+              wx:elif="{{item.fileOrFolderType=='mp4' || item.fileOrFolderType=='avi'}}" 
+              src='/images/video.png'></image>
+
+        <image class='fileImg'
+              wx:else
+              src='/images/other.png'></image>
+
+        <text class='fileName'>{{item.fileOrFolderName}}</text>
+        <!-- <text class='fileSize'>123kb</text>    -->
+        <view class="change">
+         <icon type="success_no_circle"
+                size="13"
+                class='fileSize'
+                wx:if="{{tools.arrIndexOf(selectCodeList, item.fileOrFolderCode)}}"/>
+        </view>
+    </view>
+
+    <view class="null-box" wx:if="{{!projectList.length && !listFile.length}}">
+        暂无资料
+    </view>
+  </scroll-view>
+
+</view>
+
+
+
+<view class="return-box" bindtap="goBackList" wx:if="{{allId.length}}">
+   <image src="../../images/return-icon.png" mode="widthFix"></image>
+</view>
+

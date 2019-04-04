@@ -1,0 +1,92 @@
+.team-list-box {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  margin-top: 30rpx;
+}
+
+.team-item {
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.team-item .item-left {
+  width: 46rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 44rpx;
+  color: #7E8495;
+  text-align: center;
+  margin-right: 30rpx;
+}
+
+.team-item .item-left image {
+  width: 46rpx;
+  height: 50rpx;
+}
+
+.team-item .item-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.team-item .item-center {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.team-item .item-center .user-name {
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #333333;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-item .item-center .user-box {
+  display: flex;
+  align-items: center;
+}
+
+.team-item .item-center .user-box view {
+  font-family:PingFangSC-Regular;
+  font-size:24rpx;
+  color:#7E8495;
+  margin-right:20rpx;
+}
+
+.team-item .item-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.team-item .item-right .user-point {
+  background: #FFB747;
+  border-radius: 8px;
+  font-family: PingFangSC-Semibold;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 2rpx 8rpx;
+}
+
+.team-item .item-right .zero-point {
+  width: 16rpx;
+  font-size: 20rpx;
+  color: #999999;
+  text-align: center;
+  margin-left: 12rpx;
+  font-weight: bold;
+}
+
+.team-item .item-right image {
+  width: 16rpx;
+  height: 24rpx;
+  margin-left: 12rpx;
+}

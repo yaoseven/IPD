@@ -1,0 +1,283 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+<block wx:if="{{projectCode}}">
+  <view class="messageCon">
+      <scroll-view scroll-x  class="nav-box">
+          <view class="nav-item {{curIndex===index?'active':''}}"  
+                wx:for="{{navList}}"
+                wx:key="{{index}}"
+                bindtap="selectItem"
+                data-code="{{item.categoryCode}}"
+                data-index="{{index}}">
+              <view>{{item.categoryName}}</view>
+              <view class="{{curIndex===index?'line':''}}"></view>
+          </view>
+          <!-- <view class='fileTip'>1</view> -->
+
+      </scroll-view>
+
+      <!-- 任务详情  审批者进详情没有状态底部栏-->
+      <scroll-view scroll-y="true"
+                  wx:if="{{curIndex===0&&!taskList.length}}"
+                  bindscrolltolower="scrollLower"
+                   class="messege-con {{customerCode!==taskList.taskOwner && customerCode!==taskList.taskExecutor||taskList.status!='3'&&customerCode===taskList.taskOwner?'message-approver-con':''}}">
+          <view class='task-detail-box'
+                wx:key="index"
+                data-projectCode='{{item.projectCode}}'
+                data-code='{{item.topicCode}}'>
+                <view class='area-line'></view>
+                  <view class='task'>
+                    <view class='task-item task-user'>
+                      <image class='task-headImg' src='{{taskList.taskOwnerImg}}'></image>
+                      <view class='task-item-center'>
+                        <view class="task-name">{{taskList.taskOwnerName}}</view>
+                        <view class="task-duty">{{taskList.positionName}} {{taskList.organizeCname}}</view>
+                      </view>
+                      <view class='task-item-right'>
+                        <view class='task-status card-gray-status' wx:if='{{taskList.status===1 && customerCode===taskList.taskOwner}}'>待分派</view>
+                         <view class='task-status card-gray-status' wx:if='{{taskList.status===1 && customerCode===taskList.taskExecutor}}'>已拒绝</view>
+                        <view class='task-status card-green-status' wx:if='{{taskList.status===2}}'>待确认</view>
+                        <view class='task-status card-yellow-status' wx:if='{{taskList.status===3}}'>进行中</view>
+                        <view class='task-status card-gray-status' wx:if='{{taskList.status===4}}'>已完成</view>
+                      </view>
+                    </view>
+                    <view class='task-item'>
+                      <view class='task-title'>{{taskList.taskTitle}}</view>
+                      <view class='task-contribution'>
+                        <view class='task-num'>{{taskList.taskContribution}}</view>
+                        <view class='task-num-text'>任务奉献值</view>                      
+                      </view>
+                    </view>
+                    <view class='task-item column'>
+                      <view class='taskContent'>任务内容</view>
+                      <view class='taskDescrib'>{{taskList.taskDesc}}</view>
+                      <image class='task-upImg' src='{{imgItem.attachmentPath}}' wx:for='{{taskList.attachmentImgList}}' wx:for-item='imgItem' wx:key='imgIndex' mode='widthFix'></image>
+                      <view class='Enclosure column'>
+                        <view class='Enclosure-item' wx:for="{{taskList.attachmentFileList}}" wx:for-item='fileItem' wx:key='fileIndex'>
+                          <view class='Enclosure-itemImg'>
+                            <image src='/images/addfile.png'></image>
+                            附件</view>
+                            <view class='Enclosure-itemText'>{{fileItem.attachmentTile}}</view>
+                        </view>
+                      </view>
+                    </view>
+                    <view class='task-item column'>
+                      <view class='taskContent'>交附要求</view>
+                      <view class='taskDescrib-item' wx:for="{{taskList.taskDeliveryDTOList}}" wx:for-item='deliveryItem' wx:if='{{taskList.taskDeliveryDTOList.length}}' wx:key='deliveryIndex'>
+                          <view class='taskDescrib'>
+                            {{deliveryItem.deliveryDesc}}
+                          </view>
+                          <view class='task-Enclosure-box'>
+                            <view class='task-Enclosure-boxTitle'>
+                                附件格式：{{deliveryItem.deliveryFormat}}
+                            </view>
+                            <view class='task-Enclosure-boxTime'>
+                               截止时间：{{tools.formatDate(deliveryItem.closingDate)}}
+                               </view>
+                          </view>
+                      
+                      </view>
+                      <view class='taskDescrib-item no-data' wx:if='{{!taskList.taskDeliveryDTOList.length}}'>
+                      暂无要求
+                        </view>
+                    </view>
+
+                  </view>
+                  <view class='area-line' wx:if="{{taskList.status==='3'}}"></view>
+                  <view class='task report' wx:if="{{taskList.status==='3'}}">
+                      <view class='taskContent'>汇报</view>   
+                      <report-comment report-list="{{taskList.taskReportDTOList}}"
+                         comment-list='{{commentList}}' 
+                          editor-code="{{taskList.taskOwner}}"
+                          project-code='{{query.projectCode}}'
+                          customer-code="{{customerCode}}"
+                          bindshowfile="showFile"
+                          executor-img='{{taskList.taskExecutorImg}}'
+                          executor-name='{{taskList.taskExecutorName}}'></report-comment>   
+                  </view>         
+          </view>      
+      </scroll-view>
+
+      <!-- 交付件 -->
+      <scroll-view scroll-y="true"
+                  wx:if="{{curIndex===1}}"
+                   class="messege-con {{customerCode!==taskList.taskOwner && customerCode!==taskList.taskExecutor||taskList.status!=='3'&&customerCode===taskList.taskOwner||taskList.status==='3'&&curIndex===1&&customerCode===taskList.taskExecutor?'message-approver-con':''}}">
+           <view class='area-line'></view>
+          <view class='taskFile'>          
+            <view class='task-fileItem'>
+             <image class='task-headImg' src='{{taskList.taskOwnerImg}}'></image>
+                      <view class='task-item-center'>
+                        <view class="task-name">{{taskList.taskOwnerName}}</view>
+                        <view class="task-duty">{{taskList.positionName}} {{taskList.organizeCname}}</view>
+              </view>
+              <view class='task-item-right'>
+                <view class='task-status card-gray-status' wx:if='{{taskList.status===1 && customerCode===taskList.taskOwner}}'>待分派</view>
+                         <view class='task-status card-gray-status' wx:if='{{taskList.status===1 && customerCode===taskList.taskExecutor}}'>已拒绝</view>
+                        <view class='task-status card-green-status' wx:if='{{taskList.status===2}}'>待确认</view>
+                        <view class='task-status card-yellow-status' wx:if='{{taskList.status===3}}'>进行中</view>
+                        <view class='task-status card-gray-status' wx:if='{{taskList.status===4}}'>已完成</view>
+              </view>
+            </view>     
+            </view>
+
+          <view class='taskFile' wx:for="{{taskList.taskDeliveryDTOList}}" wx:key='index'>
+            <view class='task-fileItem column'>
+              <view class='title item-center'>
+                <view class='title-name'>交付要求</view>
+                <view wx:if="{{fileBoxItem.deliveryVersion!==0 && taskCodeList.length}}" class='title-history' catchtap='history' data-deliveryCode="{{item.deliveryCode}}">
+                  历史版本
+                </view>
+                <view wx:if="{{taskList.status==='3'&& customerCode!=taskList.taskOwner&& customerCode==taskList.taskExecutor}}" class='title-upFile' catchtap='upFile' data-deliveryCode="{{item.deliveryCode}}">上传附件</view>
+              </view>
+              <view class='taskDescrib'>{{item.deliveryDesc}}</view>
+              <view class='task-Enclosure-box'>
+                <view class='task-Enclosure-boxTitle'>附件格式： {{item.deliveryFormat}}</view>
+                <view class='task-Enclosure-boxTime'>发布时间：{{tools.formatDate(item.createTime)}}</view>
+              </view>
+            </view>
+            
+            <view wx:if="{{taskCodeList.length}}" 
+                  wx:for="{{taskCodeList}}" 
+                  wx:key="index"
+                  wx:for-item='fileBoxItem'>
+              <view class='task-fileItem' bindtap='showFile' data-type='{{fileBoxItem.deliveryFileExt}}' data-path='{{fileBoxItem.deliveryFilePath}}'>
+                <view class="file-img-box">
+                  <image class='task-fileImg'
+                          wx:if="{{fileBoxItem.deliveryFile === 'rar' || fileBoxItem.deliveryFile === 'zip'}}"      
+                          src='/images/rar.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{fileBoxItem.deliveryFile === 'pdf'}}"    
+                        src='/images/pdf.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{fileBoxItem.deliveryFile === 'doc' || fileBoxItem.deliveryFile === 'wsp' || fileBoxItem.deliveryFile === 'docx'}}"    
+                        src='/images/word.png'></image>    
+
+                  <image class='task-fileImg'
+                        wx:elif="{{fileBoxItem.deliveryFile === 'jpg' || fileBoxItem.deliveryFile === 'jpeg'}}"    
+                        src='/images/jpg.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{fileBoxItem.deliveryFile === 'png'}}"    
+                        src='/images/jpg.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{fileBoxItem.deliveryFile==='xls' || fileBoxItem.deliveryFile==='xlsx'}}" 
+                        src='/images/excel.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:elif="{{fileBoxItem.deliveryFile==='mp4' || fileBoxItem.deliveryFile==='avi'}}" 
+                        src='/images/video.png'></image>
+
+                  <image class='task-fileImg'
+                        wx:else
+                        src='/images/other.png'></image>
+              </view>  
+              <view class='task-item-center'>
+                <view class="task-name">{{fileBoxItem.deliveryFileName}}</view>
+              </view>
+              <view class='task-Enclosure-boxTime'>
+                  {{fileBoxItem.createTime}}
+              </view>
+            </view>
+              <view class='task-fileItem column'  
+                    wx:for="{{fileBoxItem.ipdDeliveryAuditorList}}" 
+                    wx:key='index'  
+                    wx:for-item='auditorItem' 
+                    wx:if="{{auditorItem.auditOpinion||auditorItem.auditStatus!=='0' }}">
+                <view class='task-fileItemChild' >
+                  <image class='task-smallImg' src='{{auditorItem.auditorImg}}'></image>
+                  <view class='task-item-center'>
+                    <view class="task-small-name">{{auditorItem.auditorName}}</view>
+                    <view class="task-small-duty">{{auditorItem.auditOpinion}}</view>
+                  </view>
+                  <image class='okImg' src='/images/agree.png' wx:if="{{auditorItem.auditStatus==='1'}}"></image>
+                  <image class='okImg' src='/images/disagree.png' wx:if="{{auditorItem.auditStatus==='2'}}"></image>
+                </view>
+              </view>
+              <view class="task-fileItem" >
+                <view class='peopleImg'>
+                  <image src='{{auditorItem.auditorImg}}'    
+                         wx:if='{{fileBoxItem.ipdDeliveryAuditorList.length&& auditorIndex<4}}'
+                         wx:for="{{fileBoxItem.ipdDeliveryAuditorList}}" 
+                         wx:for-item='auditorItem'
+                         wx:for-index='auditorIndex'
+                         wx:key='auditorIndex'></image>
+                </view>
+                <view class='task-count'>共 <text>{{fileBoxItem.ipdDeliveryAuditorList.length}}</text>人审核 </view>
+              </view>
+              <view class='task-fileItem' 
+                     wx:if="{{customerCode===auditorItem.auditor&&taskList.status!=='4'}}"
+                     wx:for="{{fileBoxItem.ipdDeliveryAuditorList}}" 
+                     wx:key='index'  
+                     wx:for-item='auditorItem'>
+                <view class='task-Invitation' 
+                      bindtap='selectPerson' 
+                      data-item='{{fileBoxItem}}'>
+                    <image src='/images/share.png'></image>
+                      <text>邀请他人审核</text>
+                   
+                 </view>
+                 <view class='auditStatus-btn-box' >
+                  <view bindtap='examine' 
+                      class='task-error' 
+                      data-status='0' 
+                      data-item='{{fileBoxItem}}'
+                      wx:if="{{auditorItem.auditStatus==='0'}}">驳回</view>
+                  <view bindtap='examine' 
+                        class='task-agree' 
+                        data-status='1' 
+                        data-item='{{fileBoxItem}}'
+                        wx:if="{{auditorItem.auditStatus==='0'}}">同意</view>
+                  <view class='task-agree-noBtn' wx:if="{{auditorItem.auditStatus==='1'}}">已同意</view>
+                  <view class='task-error-noBtn' wx:if="{{auditorItem.auditStatus==='2'}}">已驳回</view>
+                 
+                 </view>               
+              </view>    
+          </view>
+        </view>
+      </scroll-view>
+
+<!-- 底部按钮状态变换 -->
+      <!--  待确认3-->
+      <view class='footNavigate' wx:if="{{taskList.status==='2' && customerCode===taskList.taskExecutor && curIndex===0}}">
+        <view class='confuse' bindtap='refusedTask' >拒绝</view>
+        <view class='sure' bindtap='accepetTask'>接受任务</view>
+      </view>
+      <!--接受任务，3进行中进行汇报 -->
+      <view class='footNavigate' wx:if="{{taskList.status==='3' && customerCode===taskList.taskExecutor && curIndex===0}}">
+        <view class='confuseCopy'><image src='/images/task-copy.png'></image></view>
+        <view bindtap='replayTask' class='sureCopy' data-code='{{taskList.taskCode}}'>汇报</view>
+      </view>
+        <!-- 如果是发起人可以结束任务 -->
+       <view class='footNavigate' 
+             wx:if="{{customerCode===taskList.taskOwner&&taskList.status==='3'&&curIndex===0}}">
+          <!-- <view class='confuseCopy  right-border'>
+            <image src='/images/share.png'></image>
+          </view> -->
+          <view class='confuseCopy' bindtap='copyTask'>
+             <image src='/images/task-copy.png'></image>
+          </view>
+          <view class='sure' bindtap='finishTask'>结束任务</view>
+        </view>  
+      <view class='footNavigate' wx:if="{{customerCode===taskList.taskOwner&&taskList.status==='3' &&curIndex===1 }}">
+          <view class='sure' bindtap='finishTask'>结束任务</view>
+      </view>  
+  </view>
+</block>
+<block wx:else>
+  <view class="null-box">
+    暂无内容
+  </view>
+</block>
+<video wx:if='{{videoUrl}}' 
+        id='videoPlay'
+        class="play-video-box"
+        show-center-play-btn="{{false}}" 
+        src='{{videoUrl}}' 
+        controls="true" 
+        objectFit="cover">
+    <cover-view class="deleteImg">
+      <cover-image src="../../../images/delete.png" bindtap='delVideo'></cover-image>
+    </cover-view>
+</video>

@@ -1,0 +1,16 @@
+<view class="search-bar">
+  <view class="search" bindtap="handleFocus">
+    <icon class="search-icon start" type="search" size="15" color="#B2B2B2"></icon>
+    <input class="search-input" value="{{ value }}" type="text" placeholder="{{ placeholder }}" maxlength="{{ 15 }}"
+           confirm-type="search"
+           focus="{{ focus }}"
+           style="width: {{ inputType ? '100%' : '51.8%' }}"
+           bindinput="handleInput"
+           bindconfirm="handleConfirm"
+    />
+    <icon class="search-icon end" type="clear" size="17" wx:if="{{ value }}" catchtap="handleClearTap"></icon>
+  </view>
+  <view class="input-cancel" wx:if="{{ inputType }}" catchtap="handleCancelTap">
+    取消
+  </view>
+</view>

@@ -1,0 +1,43 @@
+<!--pages/meeting/meeting.wxml-->
+<view class="meeting-big-box">
+  <view class="swiper-box">
+    <swiper current="{{current}}" bindchange="weekChange" class='canlendar'>
+      <block wx:for="{{weekDateList}}" wx:key="{{index}}">
+        <swiper-item>
+          <week-date start-tamps="{{item}}"></week-date>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <scroll-view class="index-box" scroll-y="true" bindscrolltolower="scrollLower">
+      <view class='item' wx:if="{{meetingList}}" wx:for="{{meetingList}}" wx:key='index'>
+        <view class='head-image' data-item='{{item.meetingCode}}' catchtap='goDetail'>
+          <view class="container-image">
+            <image src='{{item.customerImg}}'></image>
+          </view>
+          <view class='h-name'>{{item.customerName}}</view>
+        </view>
+        <view class='itemContent' data-item='{{item.meetingCode}}' catchtap='goDetail'>
+          <view class='h-title'>{{item.meetingTitle}}</view>
+          <view class='h-time'>{{item.formatM}}月{{item.formatD}}日 {{item.formatBt}} - {{item.formatEt}}</view>
+            <view class="h-people">
+              <image src='/images/people.png'></image>
+              <view wx:for="{{item.memberList}}" class="member">{{item.customerWxNickname}}；
+              </view>
+            </view>
+        </view>
+        <view wx:if="{{item.meetingOwner == customerCode}}"
+              class="del"
+              data-item='{{item.meetingCode}}'
+              bindtap="delMeeting">
+          <image src='/images/delete-gray.png'></image>
+        </view>
+      </view>
+      <view wx:if="{{!meetingList.length}}" class="null-box">
+        暂无会议
+      </view>
+   </scroll-view>
+</view>
+<view class="add-box" catchtap="addProject">
+  <image src="../../images/add-icon.png" mode="widthFix"></image>
+</view>

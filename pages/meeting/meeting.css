@@ -1,0 +1,100 @@
+/* pages/meeting/meeting.wxss */
+.meeting-big-box {
+  width: 100%;
+  height: 100%;
+  background: #f6f7fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.index-box {
+  /* background: rgba(0,0,0,0.4); */
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+}
+
+.swiper-box {
+  height: 275rpx;
+}
+
+.item{
+  min-height: 220rpx;
+  display: flex;
+  padding: 40rpx 40rpx;
+  margin-bottom: 20rpx;
+  background: #fff
+}
+.canlendar {
+  width:100%;
+  position: fixed;
+  top: 0;
+  z-index: 99
+}
+.head-image{
+  padding:0rpx 0 10rpx 0;
+}
+/*.head-image image{
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 50%
+}*/
+.container-image{
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 50%;
+  overflow: hidden;
+
+}
+.container-image image{
+  width: 92rpx;
+  height: 92rpx;
+}
+.canlendar{
+  height: 275rpx;
+}
+.itemContent image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+  float: left;
+}
+.h-people{
+  float: left;
+}
+.member{
+  font-size: 24rpx;
+  float: left;
+  color: #666
+}
+.del{
+  float: right;
+  width: 50rpx;
+  height: 50rpx;
+}
+.del image{
+  width: 30rpx;
+  height: 30rpx;
+  padding:10rpx 10rpx;
+}
+.h-name{
+  text-align: center;
+  font-size: 20rpx;
+  color: #666666
+}
+.itemContent{
+  padding-left:28rpx;
+  width: 100%
+
+}
+.h-title{
+  font-size: 28rpx;
+  color: #333;
+}
+.h-time{
+  color: #828282;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  margin-bottom: 14rpx;
+}

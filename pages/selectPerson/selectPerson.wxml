@@ -1,0 +1,30 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
+<view class='titleManage'>
+  <view class='isconfirm'>
+    <view bindtap='noConfirm'>取消</view>
+    <view bindtap='confirmUpdate'>确定</view>
+  </view>
+  <scroll-view scroll-y="true" class="person-box" wx:if="{{memberList.length}}">
+      <view class='person' 
+            wx:for="{{memberList}}"
+            wx:key="{{index}}"
+            bindtap='itemSelected'
+            data-item="{{item}}">
+        <view class='personImg'>
+          <image src='{{item.customerWxImg}}'></image>
+        </view>
+        <view class='personName'>{{item.customerWxNickname}}</view> 
+        <view class='changebox'>
+          <icon type="success_no_circle"
+                size="13"
+                class='success'
+                wx:if="{{tools.arrIndexOf(selectCodeList, item.userCode)}}"/>
+        </view>
+      </view>
+       
+  </scroll-view>
+  <view class="null-box" wx:if="{{!memberList.length}}">
+         暂无人员
+  </view>
+</view>

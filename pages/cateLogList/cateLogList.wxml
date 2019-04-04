@@ -1,0 +1,68 @@
+<view class="scroll-box">
+    <scroll-view class="catelog-box" scroll-y="true">
+        <view class="form-box"
+            wx:for="{{catelogList}}"
+            wx:key="{{index}}"
+            data-index="{{index}}"
+            data-item="{{item}}"        
+            bindlongpress='longtap'
+            bindtouchstart="touchstart" 
+            bindtouchmove="touchmove"
+            bindtouchend="touchend"
+            style="transform: translateX({{item.x ? item.x : 0}}rpx);">
+            <view class="form-item">
+                <text class="label-box">{{index + 1 >= 10 ? index + 1 : '0' + (index + 1)}}</text>
+                <view class="input-box">{{item.categoryName}}</view>
+            </view>
+            <view class="delete-item">
+                <view catchtap="editCatelog"
+                        class="edit-box"
+                        data-index="{{index}}">编辑</view>
+
+                <view catchtap="deleteCatelog"
+                        class="delete-box"
+                        data-index="{{index}}"
+                        data-item="{{item}}">删除</view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <view class="survey-tab">
+        <text bindtap="addCatelog">添加分类</text>
+        <!--<view></view>-->
+        <text bindtap="saveCatelog">保存分类</text>
+    </view>
+</view>
+
+<view class='item-move'
+       hidden='{{hidden}}'
+       style="left:{{x}}px;top:{{y}}px;width:{{width}}px;height:{{height}}px;">
+  <view  class="survey-move-box">
+    <view class='survey-item' hidden='{{hidden}}'>
+        <view class="survey-content" 
+              style="transform: translateX(140rpx);">
+          <text class="survey-lable">{{temporaryData.index+1>=10?temporaryData.index+1:'0'+(temporaryData.index+1)}}
+          </text>
+          <text class="survey-text">{{temporaryData.item.categoryName}}</text>
+        </view>
+    </view>
+  </view>
+</view>
+
+<view class="catelog-bg-box" bindtap="hiddenBox" wx:if="{{isEditShow}}"></view>
+<view class="add-catelog-box" wx:if="{{isEditShow}}">
+    <view class="form-box">
+        <view class="form-item">
+            <text class="label-box">分类名称</text>
+            <input class="input-box"
+                placeholder="请输入分类名称"
+                data-name="categoryName"
+                value="{{categoryName}}"
+                bindinput="inputChange"/>
+        </view>
+    </view>
+
+    <view class="btn-bottom-box">
+        <button type="primary" bindtap="saveItem">保存</button>
+    </view>
+</view>

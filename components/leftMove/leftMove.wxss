@@ -1,0 +1,24 @@
+.left-move-box {
+  position: relative;
+  width: 100%;
+  transition: all 0.5 ease;
+}
+
+.left-move-box .move-delete-box {
+  position: absolute;
+  right: 0px;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  transform: translateX(80px);
+}
+
+.left-move-box .move-delete-box text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 28rpx;
+  color: #ffffff;
+  transform: translate(-50%, -50%);
+}

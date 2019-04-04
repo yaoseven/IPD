@@ -1,0 +1,89 @@
+.canlendar {
+     background: #222837;
+}
+
+.date-show{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30rpx;
+    color: #282828;
+    text-align: center;
+    margin: 0 auto 10rpx;
+    color: #ffffff;
+    padding-top: 30rpx;
+}
+
+.lt-arrow,.rt-arrow{
+    padding: 20rpx 40rpx;
+}
+
+.lt-arrow image, .rt-arrow image{
+    width: 14rpx;
+    height: 26rpx;
+}
+.lt-arrow{
+    transform: rotate(180deg);
+}
+.rt-arrow{
+    padding: 20rpx 40rpx;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 0;
+    padding: 0 20rpx;
+    border-bottom: 1px solid #D0D0D0;
+}
+
+.header>view{
+    display: inline-block;
+    width: 14.285%;
+    color: #333;
+    font-size: 30rpx;
+    text-align: center;
+    color: #ffffff;
+    padding: 30rpx 0;
+}
+
+.date-box{
+    font-size: 0;
+    padding: 10rpx 20rpx;
+}
+.date-box>view{
+    position: relative;
+    display: inline-block;
+    width: 14.285%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 15rpx 0;
+}
+.date-head{
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 26rpx;
+    color: #ffffff;
+}
+.nowDay .date-head{
+    background-color: rgba(41, 195, 127, 0.8);
+}
+
+.btn-box {
+    height: 80rpx;
+    display: flex;
+}
+
+.btn-box view {
+    flex: 1;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 28rpx;
+    color: #ffffff;
+    background: #181C29;
+}
+
+.btn-box .green {
+    background: rgb(41, 195, 127);
+}

@@ -1,0 +1,39 @@
+<view class="add-project-box">
+	<view class="form-box">
+		<view class="area-line"></view>
+		<view class="form-item">
+        <textarea class="input-box"
+                  hidden="{{wxCropperFlag}}"
+                  placeholder="{{formerProjectName}}"
+                  data-name="projectName"
+                  value="{{projectName}}"
+                  maxlength="20"
+                  bindinput="inputChange"/>
+    </view>
+    <view class="area-line"></view>
+    <view class="form-item">
+    	<textarea class="input-box"
+    						hidden="{{wxCropperFlag}}"
+    						placeholder="{{formerProjectDesc}}"
+    						data-name="projectDesc"
+    						value="{{projectDesc}}"
+    						bindinput="inputChange"/>
+    </view>
+    <view class="comment-image-box">
+      <image class="item-image" src="{{imageSrc}}" wx:if="{{imageSrc}}" bindtap="uploadImage"></image>
+      <view class="item-image no-margin" bindtap="uploadImage" wx:else>
+        <view class="plus-icon"></view>
+        <view class="plus-icon-after"></view>
+      </view>
+      <view class="ewm-desc">添加项目封面</view>
+    </view>
+	</view>
+  <view class="next-btn">
+    <view bindtap="saveProject">{{query.projectCode ? '保存' : '下一步'}}</view>
+  </view>
+</view>
+
+<my-cropper image-src="{{wxCropperSrc}}"
+            wx:if="{{wxCropperFlag}}"
+            bindgetimage="getImageData"
+            bindhiddencut="hiddenCut"></my-cropper>

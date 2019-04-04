@@ -1,0 +1,21 @@
+<view class='canlendar'>
+    <view>
+        <view class='date-show'>
+            <view>{{year}}年{{month}}月</view>
+        </view>
+    </view>
+    <view class='header'>
+        <view wx:for='{{date}}' wx:key='index'>
+            {{item}}
+            <view></view>
+        </view>
+    </view>
+    <view class='date-box'>
+        <view wx:for='{{dateArr}}'
+                wx:key="index">
+            <view class='date-head'>
+                <view>{{isToday == item.dateString ? '今天' : item.dateNum}}</view>
+            </view>
+        </view>
+    </view>
+</view>

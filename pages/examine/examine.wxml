@@ -1,0 +1,12 @@
+<!--pages/addComment/addComment.wxml-->
+<scroll-view class="scroll-comment-box" scroll-y="true">
+  <view class="comment-box">
+    <textarea class="comment-textarea"
+              auto-focus
+              placeholder="请输入审核意见"
+              maxlength="500"
+              bindinput="inputChange"
+              data-name="commentContent"/>
+  </view>
+    <button type='primary' class='topFoot-btn' bindtap="saveComment">完成</button>
+</scroll-view>

@@ -1,0 +1,34 @@
+<view class="registor-title">
+  <view class="message-box">企业微信账户登陆</view>
+  <image src="../../images/reg-bg.png"></image>
+</view>
+
+<view class="form-box">
+  <view class="form-item">
+    <text class="label-box">手机号<text>*</text></text>
+    <input type="number"
+            class="input-box"
+            placeholder='请输入手机号'
+            bindinput="inputChange"
+            data-name="customerMobile"/>
+  </view>
+
+  <view class="form-item-code">
+    <text class="label-box">验证码<text>*</text></text>
+    <input class="input-box"
+            type="number"
+            data-name="verificationCode"
+            bindinput="inputChange"
+            placeholder="请输入验证码"/>
+    <view class="btn-box">
+      <view class="text-box" wx:if="{{timer}}">剩余<text>{{seconds}}</text>秒</view>
+      <view class="text-box" wx:if="{{!timer}}" bindtap="getMCode">获取验证码</view>
+    </view>
+  </view>
+  <!--  -->
+  <button type="primary"
+          lang="zh_CN"
+          open-type="getUserInfo"
+          bindgetuserinfo="goToNext"
+          class="next-btn-large">登录</button>
+</view>
